@@ -4,18 +4,1150 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>F.R.G. Salon &amp; Barbershop | Brooklyn, NYC</title>
-  <meta name="description" content="Premium haircuts, skin fades, razor shaves and grooming in Brooklyn, NYC. Four locations in Sunset Park, Bath Beach, and Gravesend.">
+  <meta name="description" content="Premium haircuts, skin fades, razor shaves and grooming in Brooklyn, NYC. Three locations in Bath Beach and Gravesend.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
   <style>
-    /* styles will be added here */
+    /* === RESET & BASE === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0d0d0d;
+      color: #f5f0e8;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    h1,h2,h3,h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.15; }
+    a { color: inherit; text-decoration: none; }
+
+    /* === VARIABLES === */
+    :root {
+      --bg:    #0d0d0d;
+      --bg2:   #141414;
+      --bg3:   #1c1c1c;
+      --gold:  #c9a84c;
+      --goldl: #e8c97e;
+      --cream: #f5f0e8;
+      --muted: #9a9585;
+      --border: rgba(201,168,76,.18);
+      --ease: .3s ease;
+    }
+
+    /* === NAV === */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 22px 0;
+      transition: padding var(--ease), background var(--ease), border-color var(--ease);
+    }
+    #nav.scrolled {
+      padding: 13px 0;
+      background: rgba(13,13,13,.96);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; flex-direction: column; gap: 2px; }
+    .nav-logo-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem; font-weight: 700;
+      color: var(--gold); letter-spacing: .06em;
+    }
+    .nav-logo-sub {
+      font-size: .6rem; letter-spacing: .28em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .nav-links { display: flex; align-items: center; gap: 34px; list-style: none; }
+    .nav-links a {
+      font-size: .78rem; letter-spacing: .13em;
+      text-transform: uppercase; color: var(--cream);
+      transition: color var(--ease); position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: var(--gold);
+      transition: width var(--ease);
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px; font-family: 'DM Sans', sans-serif;
+      font-size: .78rem; font-weight: 500; letter-spacing: .1em;
+      text-transform: uppercase; cursor: pointer; border: none;
+      transition: all var(--ease);
+    }
+    .btn-gold { background: var(--gold); color: #0d0d0d; }
+    .btn-gold:hover { background: var(--goldl); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,168,76,.3); }
+    .btn-outline { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+    .btn-outline:hover { background: var(--gold); color: #0d0d0d; }
+    .nav-cta { padding: 10px 22px; font-size: .75rem; }
+
+    /* hamburger */
+    .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-burger span { display: block; width: 24px; height: 1.5px; background: var(--cream); transition: all var(--ease); }
+    .nav-burger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px,4.5px); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px,-4.5px); }
+
+    /* mobile overlay */
+    .nav-mobile {
+      display: none; position: fixed; inset: 0;
+      background: var(--bg); z-index: 999;
+      flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-family: 'Playfair Display', serif; font-size: 2rem;
+      color: var(--cream); transition: color var(--ease);
+    }
+    .nav-mobile a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-burger { display: flex; }
+    }
+
+    /* === HERO === */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      background: var(--bg);
+    }
+    .hero-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 70% at 15% 50%, rgba(201,168,76,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 85% 80%, rgba(201,168,76,.04) 0%, transparent 55%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(201,168,76,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,.03) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 75%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 720px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 14px; margin-bottom: 30px;
+    }
+    .hero-eyebrow-line { width: 38px; height: 1px; background: var(--gold); }
+    .hero-eyebrow-text {
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .26em; text-transform: uppercase; color: var(--gold);
+    }
+    .hero-title {
+      font-size: clamp(3.4rem, 8vw, 6.8rem);
+      font-weight: 900; line-height: .96;
+      letter-spacing: -.02em; margin-bottom: 30px;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-desc {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 440px; line-height: 1.8; margin-bottom: 44px;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .hero-stats {
+      display: flex; gap: 44px;
+      margin-top: 72px; padding-top: 36px;
+      border-top: 1px solid var(--border);
+    }
+    .hero-stat-num {
+      display: block; font-family: 'Playfair Display', serif;
+      font-size: 2.4rem; font-weight: 700; color: var(--gold);
+    }
+    .hero-stat-label {
+      font-size: .7rem; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .hero-monogram {
+      position: absolute; right: -60px; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(180px, 28vw, 400px);
+      font-weight: 900; color: var(--gold);
+      opacity: .045; line-height: 1;
+      letter-spacing: -.04em; user-select: none;
+      pointer-events: none;
+    }
+    @media (max-width: 768px) {
+      .hero-monogram { display: none; }
+      .hero-stats { gap: 24px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .hero-stats { flex-wrap: wrap; gap: 20px; margin-top: 44px; }
+    }
+
+    /* === SHARED SECTION UTILITIES === */
+    .section-label {
+      display: block; font-size: .72rem; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      font-weight: 700; color: var(--cream); margin-bottom: 14px;
+    }
+    .section-sub {
+      font-size: 1rem; color: var(--muted);
+      line-height: 1.75; max-width: 520px;
+    }
+    .divider {
+      width: 56px; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin: 18px 0 38px;
+    }
+    /* fade-in on scroll */
+    .fi { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+    .fi.visible { opacity: 1; transform: none; }
+    .fi-d1 { transition-delay: .1s; }
+    .fi-d2 { transition-delay: .2s; }
+    .fi-d3 { transition-delay: .3s; }
+    .fi-d4 { transition-delay: .4s; }
+    .fi-d5 { transition-delay: .5s; }
+
+    /* === SERVICES === */
+    #services {
+      padding: 120px 0; background: var(--bg);
+      border-top: 1px solid rgba(201,168,76,.12);
+    }
+    .services-top {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; align-items: end; margin-bottom: 64px;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+    }
+    .svc-card {
+      background: var(--bg2); padding: 44px 32px;
+      position: relative; overflow: hidden;
+      transition: background var(--ease), transform var(--ease);
+      cursor: default;
+    }
+    .svc-card::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; width: 100%; height: 2px;
+      background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .4s ease;
+    }
+    .svc-card:hover { background: var(--bg3); transform: translateY(-4px); }
+    .svc-card:hover::after { transform: scaleX(1); }
+    .svc-icon {
+      width: 44px; height: 44px; margin-bottom: 22px; color: var(--gold);
+    }
+    .svc-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .svc-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 600;
+      color: var(--cream); margin-bottom: 10px;
+    }
+    .svc-desc { font-size: .88rem; color: var(--muted); line-height: 1.72; }
+    .svc-notice {
+      margin-top: 2px; background: var(--bg3);
+      padding: 24px 32px; display: flex; align-items: center; gap: 14px;
+    }
+    .svc-notice-dot { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; }
+    .svc-notice p { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+    .svc-notice strong { color: var(--cream); }
+    .svc-notice em { color: var(--gold); font-style: normal; }
+    @media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 640px) {
+      .services-top { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    /* === PRICING === */
+    #pricing {
+      padding: 120px 0; background: var(--bg2);
+      border-top: 1px solid rgba(201,168,76,.1);
+    }
+    .pricing-head { text-align: center; margin-bottom: 60px; }
+    .pricing-head .divider { margin: 18px auto 16px; }
+    .pricing-note { font-size: .82rem; color: var(--muted); }
+    .pricing-table {
+      max-width: 660px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .pr-row {
+      display: flex; align-items: center;
+      padding: 18px 26px; background: var(--bg3);
+      position: relative; overflow: hidden;
+      transition: background var(--ease);
+    }
+    .pr-row::before {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0; width: 2px;
+      background: var(--gold);
+      transform: scaleY(0); transform-origin: bottom;
+      transition: transform .3s ease;
+    }
+    .pr-row:hover { background: rgba(201,168,76,.06); }
+    .pr-row:hover::before { transform: scaleY(1); }
+    .pr-name { font-size: .93rem; color: var(--cream); flex-shrink: 0; }
+    .pr-dots {
+      flex: 1; height: 1px; margin: 0 14px;
+      background: repeating-linear-gradient(
+        90deg, var(--muted) 0, var(--muted) 3px, transparent 3px, transparent 12px
+      );
+      opacity: .25;
+    }
+    .pr-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 600;
+      color: var(--gold); flex-shrink: 0;
+    }
+    .pricing-cta { text-align: center; margin-top: 48px; }
+
+    /* === LOCATIONS === */
+    #locations {
+      padding: 120px 0; background: var(--bg);
+      border-top: 1px solid rgba(201,168,76,.1);
+    }
+    .locations-head { margin-bottom: 64px; }
+    .locations-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+    }
+    .loc-card {
+      background: var(--bg2); padding: 44px 38px;
+      position: relative; overflow: hidden;
+      transition: background var(--ease);
+    }
+    .loc-card:hover { background: var(--bg3); }
+    .loc-num {
+      position: absolute; top: 18px; right: 28px;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem; font-weight: 900;
+      color: rgba(201,168,76,.07); line-height: 1;
+      pointer-events: none; user-select: none;
+    }
+    .loc-badge {
+      display: inline-block; margin-bottom: 18px;
+      padding: 4px 12px; font-size: .68rem;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(201,168,76,.35);
+      background: rgba(201,168,76,.07);
+    }
+    .loc-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 6px;
+    }
+    .loc-address {
+      font-size: .875rem; color: var(--muted);
+      line-height: 1.55; margin-bottom: 28px;
+    }
+    .loc-hours-label {
+      font-size: .68rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .loc-hours { margin-bottom: 26px; }
+    .hr-row {
+      display: flex; justify-content: space-between;
+      font-size: .855rem; padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    .hr-day { color: var(--muted); }
+    .hr-time { color: var(--cream); }
+    .loc-socials { display: flex; gap: 10px; margin-top: 22px; }
+    .soc-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px;
+      border: 1px solid var(--border); color: var(--muted);
+      transition: all var(--ease);
+    }
+    .soc-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,.08); }
+    .soc-btn svg { width: 15px; height: 15px; fill: currentColor; }
+    @media (max-width: 900px) { .locations-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 580px) { .locations-grid { grid-template-columns: 1fr; } }
+
+    /* === TEAM === */
+    #team {
+      padding: 120px 0; background: var(--bg2);
+      border-top: 1px solid rgba(201,168,76,.1);
+    }
+    .team-head { text-align: center; margin-bottom: 64px; }
+    .team-head .divider { margin: 18px auto 0; }
+    .team-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+    }
+    .team-card {
+      background: var(--bg3); padding: 52px 36px 44px;
+      text-align: center; position: relative; overflow: hidden;
+      transition: transform var(--ease);
+    }
+    .team-card:hover { transform: translateY(-6px); }
+    .team-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 56px; height: 2px; background: var(--gold);
+    }
+    .team-initial {
+      width: 90px; height: 90px; border-radius: 50%;
+      background: rgba(201,168,76,.09);
+      border: 2px solid rgba(201,168,76,.45);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 700; color: var(--gold);
+    }
+    .team-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 600;
+      color: var(--cream); margin-bottom: 6px;
+    }
+    .team-role {
+      font-size: .7rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .team-bio { font-size: .875rem; color: var(--muted); line-height: 1.75; }
+    @media (max-width: 768px) { .team-grid { grid-template-columns: 1fr; } }
+
+    /* === TESTIMONIALS === */
+    #testimonials {
+      padding: 120px 0; background: var(--bg);
+      border-top: 1px solid rgba(201,168,76,.1);
+      position: relative; overflow: hidden;
+    }
+    #testimonials::before {
+      content: '\201C';
+      position: absolute; top: -80px; left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: 420px; line-height: 1;
+      color: rgba(201,168,76,.03);
+      pointer-events: none; user-select: none;
+    }
+    .testi-head { text-align: center; margin-bottom: 64px; }
+    .testi-head .divider { margin: 18px auto 0; }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+    }
+    .testi-card {
+      background: var(--bg2); padding: 38px 32px;
+      display: flex; flex-direction: column;
+    }
+    .testi-stars { display: flex; gap: 3px; margin-bottom: 18px; }
+    .testi-stars span { color: var(--gold); font-size: .85rem; }
+    .testi-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; color: var(--gold);
+      opacity: .5; line-height: .8; margin-bottom: 14px;
+    }
+    .testi-text {
+      font-size: .925rem; color: var(--cream);
+      font-style: italic; line-height: 1.82;
+      flex: 1; margin-bottom: 28px;
+    }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-av {
+      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(201,168,76,.12);
+      border: 1px solid rgba(201,168,76,.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: .85rem; font-weight: 700; color: var(--gold);
+    }
+    .testi-name { font-size: .875rem; font-weight: 500; color: var(--cream); }
+    .testi-loc { font-size: .75rem; color: var(--muted); }
+    @media (max-width: 900px) { .testi-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 580px) { .testi-grid { grid-template-columns: 1fr; } }
+
+    /* === GALLERY === */
+    #gallery {
+      padding: 120px 0; background: var(--bg2);
+      border-top: 1px solid rgba(201,168,76,.1);
+    }
+    .gallery-top {
+      display: flex; align-items: flex-end;
+      justify-content: space-between; gap: 20px;
+      flex-wrap: wrap; margin-bottom: 40px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 220px 220px 220px;
+      gap: 2px;
+    }
+    .gal-item { overflow: hidden; position: relative; background: var(--bg3); }
+    .gal-item:first-child { grid-row: span 2; }
+    .gal-item:last-child { grid-column: 2 / span 2; }
+    .gal-inner {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: #111;
+      transition: transform .6s ease;
+      position: relative;
+    }
+    .gal-inner img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+    }
+    .gal-item:hover .gal-inner { transform: scale(1.05); }
+    .gal-placeholder {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 10px;
+      color: rgba(201,168,76,.28);
+    }
+    .gal-placeholder svg {
+      width: 28px; height: 28px;
+      stroke: currentColor; fill: none;
+      stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .gal-placeholder span {
+      font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+    }
+    .gal-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(13,13,13,.55) 0%, transparent 55%);
+      opacity: 0; transition: opacity var(--ease);
+    }
+    .gal-item:hover .gal-overlay { opacity: 1; }
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 200px);
+      }
+      .gal-item:first-child { grid-row: span 1; }
+      .gal-item:last-child { grid-column: span 1; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(6, 200px); }
+      .gal-item:last-child { grid-column: span 1; }
+    }
+
+    /* === CONTACT === */
+    #contact {
+      padding: 140px 0; background: var(--bg);
+      border-top: 1px solid rgba(201,168,76,.1);
+      position: relative; overflow: hidden;
+    }
+    #contact::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 75% 55% at 50% 50%, rgba(201,168,76,.055) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .contact-inner {
+      position: relative; z-index: 2;
+      max-width: 620px; margin: 0 auto; text-align: center;
+    }
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700; line-height: 1.1; margin-bottom: 18px;
+    }
+    .contact-title em { font-style: italic; color: var(--gold); }
+    .contact-desc {
+      font-size: 1rem; color: var(--muted);
+      line-height: 1.78; margin-bottom: 44px;
+    }
+    .contact-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .contact-locs {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2px; max-width: 480px; margin: 60px auto 0;
+    }
+    .contact-loc {
+      background: var(--bg2); padding: 18px 12px; text-align: center;
+    }
+    .contact-loc-tag {
+      font-size: .62rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 5px;
+    }
+    .contact-loc-name { font-size: .82rem; color: var(--cream); }
+    @media (max-width: 480px) {
+      .contact-locs { grid-template-columns: repeat(2,1fr); }
+      .contact-btns { flex-direction: column; align-items: center; }
+    }
+
+    /* === FOOTER === */
+    #footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 80px 0 36px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 56px; margin-bottom: 56px;
+    }
+    .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; color: var(--gold); }
+    .footer-brand-sub {
+      font-size: .6rem; letter-spacing: .26em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 18px;
+    }
+    .footer-tagline {
+      font-size: .875rem; color: var(--muted);
+      line-height: 1.72; margin-bottom: 26px; max-width: 270px;
+    }
+    .footer-socials { display: flex; gap: 8px; flex-wrap: wrap; }
+    .footer-col-title {
+      font-size: .68rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 18px; font-weight: 500;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: .855rem; color: var(--muted); transition: color var(--ease); }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom {
+      padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 14px;
+    }
+    .footer-copy { font-size: .78rem; color: var(--muted); }
+    .footer-legal { display: flex; gap: 22px; }
+    .footer-legal a { font-size: .78rem; color: var(--muted); transition: color var(--ease); }
+    .footer-legal a:hover { color: var(--gold); }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; } }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
 
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">
+          <span class="nav-logo-mark">F.R.G.</span>
+          <span class="nav-logo-sub">Salon &amp; Barbershop · Brooklyn</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#locations">Locations</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-gold nav-cta">Book Now</a>
+        <div class="nav-burger" id="navBurger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-monogram" aria-hidden="true">FRG</div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-line"></span>
+          <span class="hero-eyebrow-text">Brooklyn, New York City · 3 Locations</span>
+        </div>
+        <h1 class="hero-title">
+          Where Craft<br>Meets <em>Culture</em>
+        </h1>
+        <p class="hero-desc">
+          Premium cuts, fades, and grooming rooted in Brooklyn's most
+          vibrant neighborhoods. Three locations. One standard of excellence.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-gold">
+            Book Your Appointment
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#locations" class="btn btn-outline">Find a Location</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-num">3</span>
+            <span class="hero-stat-label">Brooklyn Locations</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">3</span>
+            <span class="hero-stat-label">Co-Founders</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">10+</span>
+            <span class="hero-stat-label">Years in Brooklyn</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="services-top">
+        <div class="fi">
+          <span class="section-label">What We Do</span>
+          <h2 class="section-title">The Full<br>Experience</h2>
+          <div class="divider"></div>
+        </div>
+        <p class="section-sub fi fi-d1">
+          From precision skin fades to classic razor shaves — every visit is a ritual.
+          Our barbers are trained in the full spectrum of men's grooming, with a
+          dedicated women's hair area at FRG 3.
+        </p>
+      </div>
+      <div class="services-grid">
+        <div class="svc-card fi">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M6 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm12 0a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM6 9c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm12 0c-.29 0-.62.02-.97.05C18.19 9.93 20 11.1 20 13v2h4v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+          <h3 class="svc-name">Precision Haircuts</h3>
+          <p class="svc-desc">Expert cuts tailored to your face shape, hair texture, and style. Classic to contemporary — every time.</p>
+        </div>
+        <div class="svc-card fi fi-d1">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M9.5 4a6.5 6.5 0 0 1 0 13H7V4h2.5zM7 2H5v20h2v-3h2.5a8.5 8.5 0 0 0 0-17H7V2z"/></svg>
+          </div>
+          <h3 class="svc-name">Skin Fades &amp; Tape-Ups</h3>
+          <p class="svc-desc">Zero-to-skin precision fading with razor-sharp lines. Our signature — what FRG is known for across Brooklyn.</p>
+        </div>
+        <div class="svc-card fi fi-d2">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 17 L9 11 L15 17 M9 11 L9 3"/><path d="M14 3 Q20 3 20 9 Q20 15 14 15"/></svg>
+          </div>
+          <h3 class="svc-name">Razor Shaves</h3>
+          <p class="svc-desc">Hot towel, straight-razor treatment for the smoothest shave of your life. Old-school craftsmanship, timeless results.</p>
+        </div>
+        <div class="svc-card fi fi-d1">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 7c0 4.4-3.6 8-8 8S4 11.4 4 7h16z"/><path d="M12 15v6M8 21h8M7 7c0-2.8 2.2-5 5-5s5 2.2 5 5"/></svg>
+          </div>
+          <h3 class="svc-name">Beard Trims &amp; Shaping</h3>
+          <p class="svc-desc">Sculpted beard work with scissors, clippers, and straight razor. Clean edges, full shape, and a crisp finish.</p>
+        </div>
+        <div class="svc-card fi fi-d2">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          </div>
+          <h3 class="svc-name">Hair Coloring</h3>
+          <p class="svc-desc">Full-spectrum coloring services — subtle highlights to bold transformations. Professional-grade results that last.</p>
+        </div>
+        <div class="svc-card fi fi-d3">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <h3 class="svc-name">Kids Cuts &amp; Line-Ups</h3>
+          <p class="svc-desc">Patient, experienced barbers who make every kid feel at ease. Great cuts for every age, every hair type.</p>
+        </div>
+      </div>
+      <div class="svc-notice fi">
+        <span class="svc-notice-dot">✦</span>
+        <p><strong>Women's Hair Services</strong> — Available exclusively at <em>FRG 3 (Bath Beach / Gravesend)</em>. Full cuts, coloring, and styling in a dedicated salon area.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="pricing-head fi">
+        <span class="section-label">Transparent Pricing</span>
+        <h2 class="section-title">Service Menu</h2>
+        <div class="divider"></div>
+        <p class="pricing-note">Prices may vary slightly by location. Walk-ins welcome.</p>
+      </div>
+      <div class="pricing-table fi fi-d1">
+        <div class="pr-row">
+          <span class="pr-name">Full Service w/ Beard</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$40</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Skin Fade w/ Beard</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$40</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Regular Haircut w/ Beard</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$35</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Skin Fade / Tape-Up</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$25</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Regular Haircut</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$22</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Kids Skin Fade</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$22</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Kids Regular Haircut</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$20</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Adult Line-Up</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$15</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Kids Line-Up</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$12</span>
+        </div>
+      </div>
+      <div class="pricing-cta fi fi-d2">
+        <a href="#contact" class="btn btn-gold">Book Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section id="locations">
+    <div class="container">
+      <div class="locations-head fi">
+        <span class="section-label">Find Us</span>
+        <h2 class="section-title">Three Locations<br>Across Brooklyn</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Deep roots in the neighborhoods we serve. Walk-ins welcome at all locations.</p>
+      </div>
+      <div class="locations-grid">
+
+        <!-- FRG No. 4 — 152 Avenue U -->
+        <div class="loc-card fi">
+          <div class="loc-num">4</div>
+          <div class="loc-badge">FRG No. 4</div>
+          <h3 class="loc-name">Gravesend</h3>
+          <p class="loc-address">152 Avenue U<br>Brooklyn, NY 11223<br><a href="tel:+17187016894" style="color:var(--gold)">(718) 701-6894</a></p>
+          <div class="loc-hours">
+            <div class="loc-hours-label">Hours</div>
+            <div class="hr-row"><span class="hr-day">Mon – Sun</span><span class="hr-time">9:00 AM – 10:00 PM</span></div>
+          </div>
+          <div class="loc-socials">
+            <a href="https://www.facebook.com/profile.php?id=100095140941344" target="_blank" rel="noopener" class="soc-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/frgsalonandbarbershop4" target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- FRG No. 3 — 1728 86th St -->
+        <div class="loc-card fi fi-d1">
+          <div class="loc-num">3</div>
+          <div class="loc-badge">FRG No. 3 · Women's Salon</div>
+          <h3 class="loc-name">Bath Beach</h3>
+          <p class="loc-address">1728 86th St<br>Brooklyn, NY 11214<br><a href="tel:+17183313733" style="color:var(--gold)">(718) 331-3733</a></p>
+          <div class="loc-hours">
+            <div class="loc-hours-label">Hours</div>
+            <div class="hr-row"><span class="hr-day">Mon – Sun</span><span class="hr-time">8:00 AM – 9:30 PM</span></div>
+          </div>
+          <div class="loc-socials">
+            <a href="https://www.facebook.com/FRGSalonBarberShop3" target="_blank" rel="noopener" class="soc-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/barbershop3frg" target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- F.R.G. Barbershop — 8606 19th Ave -->
+        <div class="loc-card fi fi-d2">
+          <div class="loc-num">1</div>
+          <div class="loc-badge">F.R.G. Barbershop</div>
+          <h3 class="loc-name">Bath Beach</h3>
+          <p class="loc-address">8606 19th Ave<br>Brooklyn, NY 11214<br><a href="tel:+17189752014" style="color:var(--gold)">(718) 975-2014</a></p>
+          <div class="loc-hours">
+            <div class="loc-hours-label">Hours</div>
+            <div class="hr-row"><span class="hr-day">Mon – Fri</span><span class="hr-time">9:00 AM – 9:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Saturday</span><span class="hr-time">9:00 AM – 8:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Sunday</span><span class="hr-time">9:00 AM – 7:00 PM</span></div>
+          </div>
+          <div class="loc-socials">
+            <a href="https://www.facebook.com/FRG-Barbershop-417898354978197" target="_blank" rel="noopener" class="soc-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/frg_barber_shop" target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="container">
+      <div class="team-head fi">
+        <span class="section-label">The People Behind It</span>
+        <h2 class="section-title">Meet the Founders</h2>
+        <div class="divider"></div>
+        <p class="section-sub" style="margin: 0 auto;">Three brothers. One vision. Built from the ground up in Brooklyn.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card fi">
+          <div class="team-initial">F</div>
+          <h3 class="team-name">Francisco López</h3>
+          <div class="team-role">Co-Founder</div>
+          <p class="team-bio">The visionary behind FRG's signature aesthetic. Francisco set the standard for precision and artistry that defines every cut across all four locations.</p>
+        </div>
+        <div class="team-card fi fi-d1">
+          <div class="team-initial">R</div>
+          <h3 class="team-name">Roberto López</h3>
+          <div class="team-role">Co-Founder</div>
+          <p class="team-bio">Roberto brings the business spirit and community heart to FRG. A Brooklyn native dedicated to building something real, lasting, and rooted in the culture.</p>
+        </div>
+        <div class="team-card fi fi-d2">
+          <div class="team-initial">J</div>
+          <h3 class="team-name">Jorge López</h3>
+          <div class="team-role">Co-Founder</div>
+          <p class="team-bio">Jorge's hands are behind some of Brooklyn's cleanest fades. His technical mastery and passion for the craft elevate the entire FRG team's standard of work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="testi-head fi">
+        <span class="section-label">Client Stories</span>
+        <h2 class="section-title">What Brooklyn Says</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="testi-grid">
+
+        <div class="testi-card fi">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-text">Best fade in Brooklyn, no question. I've been coming to FRG for years and the consistency is unreal. My barber knows exactly what I want before I even sit down.</p>
+          <div class="testi-author">
+            <div class="testi-av">MR</div>
+            <div>
+              <div class="testi-name">Marcus R.</div>
+              <div class="testi-loc">Sunset Park Regular</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card fi fi-d1">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-text">Brought my son here for his first real cut and the barber was so patient with him. He came out looking like a million bucks. We won't go anywhere else now.</p>
+          <div class="testi-author">
+            <div class="testi-av">DL</div>
+            <div>
+              <div class="testi-name">Diana L.</div>
+              <div class="testi-loc">Bath Beach Customer</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card fi fi-d2">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-text">The hot towel razor shave is an experience. It's not just a haircut — it's a ritual. This is what a real barbershop feels like. Proper Brooklyn culture, every time.</p>
+          <div class="testi-author">
+            <div class="testi-av">JT</div>
+            <div>
+              <div class="testi-name">James T.</div>
+              <div class="testi-loc">Gravesend Regular</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="container">
+      <div class="gallery-top fi">
+        <div>
+          <span class="section-label">Our Work</span>
+          <h2 class="section-title">The Portfolio</h2>
+          <div class="divider"></div>
+        </div>
+        <a href="https://www.instagram.com/frg_barber_shop" target="_blank" rel="noopener" class="btn btn-outline">
+          Follow on Instagram
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+      <div class="gallery-grid fi fi-d1">
+        <div class="gal-item">
+          <div class="gal-inner">
+            <img src="frg-barbershop/IMG_4858.jpeg" alt="F.R.G. Salon &amp; Barber Shop exterior at 152 Avenue U, Brooklyn">
+            <div class="gal-overlay"></div>
+          </div>
+        </div>
+        <div class="gal-item">
+          <div class="gal-inner">
+            <img src="frg-barbershop/IMG_4859.jpeg" alt="FRG Salon &amp; Barbershop interior">
+            <div class="gal-overlay"></div>
+          </div>
+        </div>
+        <div class="gal-item">
+          <div class="gal-inner">
+            <img src="frg-barbershop/IMG_4866.jpeg" alt="FRG waiting area">
+            <div class="gal-overlay"></div>
+          </div>
+        </div>
+        <div class="gal-item">
+          <div class="gal-inner">
+            <img src="frg-barbershop/IMG_4864.jpeg" alt="FRG front desk and entrance">
+            <div class="gal-overlay"></div>
+          </div>
+        </div>
+        <div class="gal-item">
+          <div class="gal-inner">
+            <img src="frg-barbershop/IMG_4863.jpeg" alt="FRG barber station">
+            <div class="gal-overlay"></div>
+          </div>
+        </div>
+        <div class="gal-item">
+          <div class="gal-inner">
+            <img src="frg-barbershop/IMG_4867.jpeg" alt="FRG price list">
+            <div class="gal-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner fi">
+        <span class="section-label">Ready?</span>
+        <h2 class="contact-title">Book Your<br><em>Next Cut</em></h2>
+        <p class="contact-desc">Walk-ins welcome at all three Brooklyn locations. For appointments, call your nearest shop or reach us on Instagram — we'll get you in.</p>
+        <div class="contact-btns">
+          <a href="tel:+17187016894" class="btn btn-gold">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.37h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.92 17z"/></svg>
+            Call to Book
+          </a>
+          <a href="https://www.instagram.com/frg_barber_shop" target="_blank" rel="noopener" class="btn btn-outline">DM on Instagram</a>
+          <a href="#locations" class="btn btn-outline">Find a Location</a>
+        </div>
+        <div class="contact-locs">
+          <div class="contact-loc"><div class="contact-loc-tag">FRG No. 4</div><div class="contact-loc-name">Gravesend</div></div>
+          <div class="contact-loc"><div class="contact-loc-tag">FRG No. 3</div><div class="contact-loc-name">Bath Beach</div></div>
+          <div class="contact-loc"><div class="contact-loc-tag">F.R.G.</div><div class="contact-loc-name">Bath Beach</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">F.R.G.</div>
+          <div class="footer-brand-sub">Salon &amp; Barbershop · Brooklyn, NYC</div>
+          <p class="footer-tagline">Premium grooming rooted in Brooklyn's culture. Three locations serving Bath Beach and Gravesend, Brooklyn.</p>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/profile.php?id=100095140941344" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG No. 4 Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://www.instagram.com/frgsalonandbarbershop4" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG No. 4 Instagram"><svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></a>
+            <a href="https://www.facebook.com/FRGSalonBarberShop3" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG No. 3 Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://www.instagram.com/barbershop3frg" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG No. 3 Instagram"><svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></a>
+            <a href="https://www.facebook.com/FRG-Barbershop-417898354978197" target="_blank" rel="noopener" class="soc-btn" aria-label="F.R.G. Barbershop Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://www.instagram.com/frg_barber_shop" target="_blank" rel="noopener" class="soc-btn" aria-label="F.R.G. Barbershop Instagram"><svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Services</div>
+          <ul class="footer-links">
+            <li><a href="#services">Haircuts</a></li>
+            <li><a href="#services">Skin Fades</a></li>
+            <li><a href="#services">Razor Shaves</a></li>
+            <li><a href="#services">Beard Trims</a></li>
+            <li><a href="#services">Hair Coloring</a></li>
+            <li><a href="#services">Kids Cuts</a></li>
+            <li><a href="#services">Women's Hair</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Locations</div>
+          <ul class="footer-links">
+            <li><a href="#locations">FRG No. 4 – Gravesend</a></li>
+            <li><a href="#locations">FRG No. 3 – Bath Beach</a></li>
+            <li><a href="#locations">F.R.G. Barbershop – Bath Beach</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Follow Us</div>
+          <ul class="footer-links">
+            <li><a href="https://www.instagram.com/frgsalonandbarbershop4" target="_blank" rel="noopener">@frgsalonandbarbershop4</a></li>
+            <li><a href="https://www.instagram.com/barbershop3frg" target="_blank" rel="noopener">@barbershop3frg</a></li>
+            <li><a href="https://www.instagram.com/frg_barber_shop" target="_blank" rel="noopener">@frg_barber_shop</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 F.R.G. Salon &amp; Barbershop. All rights reserved. Brooklyn, NYC.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <div class="nav-mobile" id="navMobile">
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#locations">Locations</a>
+    <a href="#team">Team</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact" class="btn btn-gold">Book Now</a>
+  </div>
+
   <script>
-    /* scripts will be added here */
+    /* === NAV SCROLL + BURGER === */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+    const burger = document.getElementById('navBurger');
+    const mobileNav = document.getElementById('navMobile');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+      document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    }));
+
+    /* === SCROLL FADE-IN === */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+    document.querySelectorAll('.fi').forEach(el => observer.observe(el));
+
+    /* === SMOOTH ANCHOR SCROLL === */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
   </script>
 </body>
 </html>
