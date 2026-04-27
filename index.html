@@ -366,6 +366,49 @@
     .soc-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,.08); }
     .soc-btn svg { width: 15px; height: 15px; fill: currentColor; }
     @media (max-width: 768px) { .locations-grid { grid-template-columns: 1fr; } }
+
+    /* === TEAM === */
+    #team {
+      padding: 120px 0; background: var(--bg2);
+      border-top: 1px solid rgba(201,168,76,.1);
+    }
+    .team-head { text-align: center; margin-bottom: 64px; }
+    .team-head .divider { margin: 18px auto 0; }
+    .team-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+    }
+    .team-card {
+      background: var(--bg3); padding: 52px 36px 44px;
+      text-align: center; position: relative; overflow: hidden;
+      transition: transform var(--ease);
+    }
+    .team-card:hover { transform: translateY(-6px); }
+    .team-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 56px; height: 2px; background: var(--gold);
+    }
+    .team-initial {
+      width: 90px; height: 90px; border-radius: 50%;
+      background: rgba(201,168,76,.09);
+      border: 2px solid rgba(201,168,76,.45);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 700; color: var(--gold);
+    }
+    .team-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 600;
+      color: var(--cream); margin-bottom: 6px;
+    }
+    .team-role {
+      font-size: .7rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .team-bio { font-size: .875rem; color: var(--muted); line-height: 1.75; }
+    @media (max-width: 768px) { .team-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -663,6 +706,38 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="container">
+      <div class="team-head fi">
+        <span class="section-label">The People Behind It</span>
+        <h2 class="section-title">Meet the Founders</h2>
+        <div class="divider"></div>
+        <p class="section-sub" style="margin: 0 auto;">Three brothers. One vision. Built from the ground up in Brooklyn.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card fi">
+          <div class="team-initial">F</div>
+          <h3 class="team-name">Francisco López</h3>
+          <div class="team-role">Co-Founder</div>
+          <p class="team-bio">The visionary behind FRG's signature aesthetic. Francisco set the standard for precision and artistry that defines every cut across all four locations.</p>
+        </div>
+        <div class="team-card fi fi-d1">
+          <div class="team-initial">R</div>
+          <h3 class="team-name">Roberto López</h3>
+          <div class="team-role">Co-Founder</div>
+          <p class="team-bio">Roberto brings the business spirit and community heart to FRG. A Brooklyn native dedicated to building something real, lasting, and rooted in the culture.</p>
+        </div>
+        <div class="team-card fi fi-d2">
+          <div class="team-initial">J</div>
+          <h3 class="team-name">Jorge López</h3>
+          <div class="team-role">Co-Founder</div>
+          <p class="team-bio">Jorge's hands are behind some of Brooklyn's cleanest fades. His technical mastery and passion for the craft elevate the entire FRG team's standard of work.</p>
+        </div>
       </div>
     </div>
   </section>
