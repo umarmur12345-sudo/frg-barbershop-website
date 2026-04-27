@@ -409,6 +409,56 @@
     }
     .team-bio { font-size: .875rem; color: var(--muted); line-height: 1.75; }
     @media (max-width: 768px) { .team-grid { grid-template-columns: 1fr; } }
+
+    /* === TESTIMONIALS === */
+    #testimonials {
+      padding: 120px 0; background: var(--bg);
+      border-top: 1px solid rgba(201,168,76,.1);
+      position: relative; overflow: hidden;
+    }
+    #testimonials::before {
+      content: '\201C';
+      position: absolute; top: -80px; left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: 420px; line-height: 1;
+      color: rgba(201,168,76,.03);
+      pointer-events: none; user-select: none;
+    }
+    .testi-head { text-align: center; margin-bottom: 64px; }
+    .testi-head .divider { margin: 18px auto 0; }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+    }
+    .testi-card {
+      background: var(--bg2); padding: 38px 32px;
+      display: flex; flex-direction: column;
+    }
+    .testi-stars { display: flex; gap: 3px; margin-bottom: 18px; }
+    .testi-stars span { color: var(--gold); font-size: .85rem; }
+    .testi-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; color: var(--gold);
+      opacity: .5; line-height: .8; margin-bottom: 14px;
+    }
+    .testi-text {
+      font-size: .925rem; color: var(--cream);
+      font-style: italic; line-height: 1.82;
+      flex: 1; margin-bottom: 28px;
+    }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-av {
+      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(201,168,76,.12);
+      border: 1px solid rgba(201,168,76,.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: .85rem; font-weight: 700; color: var(--gold);
+    }
+    .testi-name { font-size: .875rem; font-weight: 500; color: var(--cream); }
+    .testi-loc { font-size: .75rem; color: var(--muted); }
+    @media (max-width: 900px) { .testi-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 580px) { .testi-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -738,6 +788,59 @@
           <div class="team-role">Co-Founder</div>
           <p class="team-bio">Jorge's hands are behind some of Brooklyn's cleanest fades. His technical mastery and passion for the craft elevate the entire FRG team's standard of work.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="testi-head fi">
+        <span class="section-label">Client Stories</span>
+        <h2 class="section-title">What Brooklyn Says</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="testi-grid">
+
+        <div class="testi-card fi">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-text">Best fade in Brooklyn, no question. I've been coming to FRG for years and the consistency is unreal. My barber knows exactly what I want before I even sit down.</p>
+          <div class="testi-author">
+            <div class="testi-av">MR</div>
+            <div>
+              <div class="testi-name">Marcus R.</div>
+              <div class="testi-loc">Sunset Park Regular</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card fi fi-d1">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-text">Brought my son here for his first real cut and the barber was so patient with him. He came out looking like a million bucks. We won't go anywhere else now.</p>
+          <div class="testi-author">
+            <div class="testi-av">DL</div>
+            <div>
+              <div class="testi-name">Diana L.</div>
+              <div class="testi-loc">Bath Beach Customer</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card fi fi-d2">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-text">The hot towel razor shave is an experience. It's not just a haircut — it's a ritual. This is what a real barbershop feels like. Proper Brooklyn culture, every time.</p>
+          <div class="testi-author">
+            <div class="testi-av">JT</div>
+            <div>
+              <div class="testi-name">James T.</div>
+              <div class="testi-loc">Gravesend Regular</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
