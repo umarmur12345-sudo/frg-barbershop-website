@@ -272,12 +272,25 @@
     .pricing-head .divider { margin: 18px auto 16px; }
     .pricing-note { font-size: .82rem; color: var(--muted); }
     .pricing-table {
-      max-width: 660px; margin: 0 auto;
-      display: flex; flex-direction: column; gap: 2px;
+      max-width: 1040px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 40px;
     }
+    .pr-group { display: flex; flex-direction: column; gap: 2px; }
+    .pr-cat {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--gold);
+      letter-spacing: .14em; text-transform: uppercase;
+      padding: 0 0 10px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 8px;
+    }
+    .pr-group .pr-cat:not(:first-child) { margin-top: 26px; }
     .pr-row {
       display: flex; align-items: center;
-      padding: 18px 26px; background: var(--bg3);
+      padding: 16px 22px; background: var(--bg3);
       position: relative; overflow: hidden;
       transition: background var(--ease);
     }
@@ -303,7 +316,21 @@
       font-size: 1.05rem; font-weight: 600;
       color: var(--gold); flex-shrink: 0;
     }
-    .pricing-cta { text-align: center; margin-top: 48px; }
+    .pricing-foot {
+      max-width: 1040px; margin: 44px auto 0;
+      padding: 22px 26px;
+      text-align: center;
+      border: 1px solid var(--border);
+      background: rgba(201,168,76,.04);
+      font-family: 'Playfair Display', serif;
+      font-size: .9rem; font-weight: 600;
+      letter-spacing: .26em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .pricing-cta { text-align: center; margin-top: 36px; }
+    @media (max-width: 768px) {
+      .pricing-table { grid-template-columns: 1fr; gap: 28px; max-width: 640px; }
+    }
 
     /* === LOCATIONS === */
     #locations {
@@ -750,58 +777,50 @@
   <section id="pricing">
     <div class="container">
       <div class="pricing-head fi">
-        <span class="section-label">Transparent Pricing</span>
-        <h2 class="section-title">Service Menu</h2>
+        <span class="section-label">Service Menu</span>
+        <h2 class="section-title">Price Menu</h2>
         <div class="divider"></div>
-        <p class="pricing-note">Prices may vary slightly by location. Walk-ins welcome.</p>
+        <p class="pricing-note">Walk-ins welcome. Cash &amp; cards accepted.</p>
       </div>
       <div class="pricing-table fi fi-d1">
-        <div class="pr-row">
-          <span class="pr-name">Full Service w/ Beard</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$40</span>
+
+        <div class="pr-group">
+          <h3 class="pr-cat">Men's</h3>
+          <div class="pr-row"><span class="pr-name">Regular</span><div class="pr-dots"></div><span class="pr-price">$25</span></div>
+          <div class="pr-row"><span class="pr-name">Skin Fade</span><div class="pr-dots"></div><span class="pr-price">$28</span></div>
+          <div class="pr-row"><span class="pr-name">Regular Tape Up</span><div class="pr-dots"></div><span class="pr-price">$25</span></div>
+          <div class="pr-row"><span class="pr-name">Skin Tape Up</span><div class="pr-dots"></div><span class="pr-price">$28</span></div>
+          <div class="pr-row"><span class="pr-name">Flat Top</span><div class="pr-dots"></div><span class="pr-price">$30</span></div>
+          <div class="pr-row"><span class="pr-name">Shape Up</span><div class="pr-dots"></div><span class="pr-price">$20</span></div>
+          <div class="pr-row"><span class="pr-name">Designs</span><div class="pr-dots"></div><span class="pr-price">$45</span></div>
+          <div class="pr-row"><span class="pr-name">Haircut &amp; Beard</span><div class="pr-dots"></div><span class="pr-price">$40</span></div>
+          <div class="pr-row"><span class="pr-name">Black Mask</span><div class="pr-dots"></div><span class="pr-price">$20</span></div>
+          <div class="pr-row"><span class="pr-name">Men's Highlights</span><div class="pr-dots"></div><span class="pr-price">$70</span></div>
+
+          <h3 class="pr-cat">Eyebrow</h3>
+          <div class="pr-row"><span class="pr-name">Eyebrow w/ Blade</span><div class="pr-dots"></div><span class="pr-price">$5</span></div>
+          <div class="pr-row"><span class="pr-name">Eyebrow w/ Wax</span><div class="pr-dots"></div><span class="pr-price">$15</span></div>
         </div>
-        <div class="pr-row">
-          <span class="pr-name">Skin Fade w/ Beard</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$40</span>
+
+        <div class="pr-group">
+          <h3 class="pr-cat">Women's</h3>
+          <div class="pr-row"><span class="pr-name">Women's Haircut</span><div class="pr-dots"></div><span class="pr-price">$35</span></div>
+          <div class="pr-row"><span class="pr-name">Wash &amp; Blow Dry</span><div class="pr-dots"></div><span class="pr-price">$45</span></div>
+          <div class="pr-row"><span class="pr-name">Women's Highlights</span><div class="pr-dots"></div><span class="pr-price">$150</span></div>
+          <div class="pr-row"><span class="pr-name">Color Only</span><div class="pr-dots"></div><span class="pr-price">$110</span></div>
+          <div class="pr-row"><span class="pr-name">Black Only</span><div class="pr-dots"></div><span class="pr-price">$85</span></div>
+          <div class="pr-row"><span class="pr-name">Root Color</span><div class="pr-dots"></div><span class="pr-price">$70</span></div>
+          <div class="pr-row"><span class="pr-name">Braids</span><div class="pr-dots"></div><span class="pr-price">$70</span></div>
+          <div class="pr-row"><span class="pr-name">Hairstyles</span><div class="pr-dots"></div><span class="pr-price">$75</span></div>
+          <div class="pr-row"><span class="pr-name">Make Up</span><div class="pr-dots"></div><span class="pr-price">$75</span></div>
+
+          <h3 class="pr-cat">Kids</h3>
+          <div class="pr-row"><span class="pr-name">Kid's Haircut</span><div class="pr-dots"></div><span class="pr-price">$22</span></div>
+          <div class="pr-row"><span class="pr-name">Kid's Skin Fade</span><div class="pr-dots"></div><span class="pr-price">$25</span></div>
         </div>
-        <div class="pr-row">
-          <span class="pr-name">Regular Haircut w/ Beard</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$35</span>
-        </div>
-        <div class="pr-row">
-          <span class="pr-name">Skin Fade / Tape-Up</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$25</span>
-        </div>
-        <div class="pr-row">
-          <span class="pr-name">Regular Haircut</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$22</span>
-        </div>
-        <div class="pr-row">
-          <span class="pr-name">Kids Skin Fade</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$22</span>
-        </div>
-        <div class="pr-row">
-          <span class="pr-name">Kids Regular Haircut</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$20</span>
-        </div>
-        <div class="pr-row">
-          <span class="pr-name">Adult Line-Up</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$15</span>
-        </div>
-        <div class="pr-row">
-          <span class="pr-name">Kids Line-Up</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$12</span>
-        </div>
+
       </div>
+      <p class="pricing-foot fi fi-d2">No return · No refund · No exchange</p>
       <div class="pricing-cta fi fi-d2">
         <a href="#contact" class="btn btn-gold">Book Now</a>
       </div>
