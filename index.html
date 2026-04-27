@@ -110,6 +110,79 @@
       .nav-links, .nav-cta { display: none; }
       .nav-burger { display: flex; }
     }
+
+    /* === HERO === */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      background: var(--bg);
+    }
+    .hero-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 70% at 15% 50%, rgba(201,168,76,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 85% 80%, rgba(201,168,76,.04) 0%, transparent 55%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(201,168,76,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,.03) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 75%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 720px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 14px; margin-bottom: 30px;
+    }
+    .hero-eyebrow-line { width: 38px; height: 1px; background: var(--gold); }
+    .hero-eyebrow-text {
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .26em; text-transform: uppercase; color: var(--gold);
+    }
+    .hero-title {
+      font-size: clamp(3.4rem, 8vw, 6.8rem);
+      font-weight: 900; line-height: .96;
+      letter-spacing: -.02em; margin-bottom: 30px;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-desc {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 440px; line-height: 1.8; margin-bottom: 44px;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .hero-stats {
+      display: flex; gap: 44px;
+      margin-top: 72px; padding-top: 36px;
+      border-top: 1px solid var(--border);
+    }
+    .hero-stat-num {
+      display: block; font-family: 'Playfair Display', serif;
+      font-size: 2.4rem; font-weight: 700; color: var(--gold);
+    }
+    .hero-stat-label {
+      font-size: .7rem; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .hero-monogram {
+      position: absolute; right: -60px; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(180px, 28vw, 400px);
+      font-weight: 900; color: var(--gold);
+      opacity: .045; line-height: 1;
+      letter-spacing: -.04em; user-select: none;
+      pointer-events: none;
+    }
+    @media (max-width: 768px) {
+      .hero-monogram { display: none; }
+      .hero-stats { gap: 24px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .hero-stats { flex-wrap: wrap; gap: 20px; margin-top: 44px; }
+    }
   </style>
 </head>
 <body>
@@ -136,6 +209,49 @@
       </div>
     </div>
   </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-monogram" aria-hidden="true">FRG</div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-line"></span>
+          <span class="hero-eyebrow-text">Brooklyn, New York City · Est. 4 Locations</span>
+        </div>
+        <h1 class="hero-title">
+          Where Craft<br>Meets <em>Culture</em>
+        </h1>
+        <p class="hero-desc">
+          Premium cuts, fades, and grooming rooted in Brooklyn's most
+          vibrant neighborhoods. Four locations. One standard of excellence.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-gold">
+            Book Your Appointment
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#locations" class="btn btn-outline">Find a Location</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-num">4</span>
+            <span class="hero-stat-label">Brooklyn Locations</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">3</span>
+            <span class="hero-stat-label">Co-Founders</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">10+</span>
+            <span class="hero-stat-label">Years in Brooklyn</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- MOBILE NAV OVERLAY -->
   <div class="nav-mobile" id="navMobile">
