@@ -474,17 +474,24 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
-      grid-template-rows: 220px 220px;
+      grid-template-rows: 220px 220px 220px;
       gap: 2px;
     }
     .gal-item { overflow: hidden; position: relative; background: var(--bg3); }
     .gal-item:first-child { grid-row: span 2; }
+    .gal-item:last-child { grid-column: 2 / span 2; }
     .gal-inner {
       width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
+      background: #111;
       transition: transform .6s ease;
       position: relative;
+    }
+    .gal-inner img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
     }
     .gal-item:hover .gal-inner { transform: scale(1.05); }
     .gal-placeholder {
@@ -509,12 +516,14 @@
     @media (max-width: 768px) {
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(3, 180px);
+        grid-template-rows: repeat(3, 200px);
       }
       .gal-item:first-child { grid-row: span 1; }
+      .gal-item:last-child { grid-column: span 1; }
     }
     @media (max-width: 480px) {
-      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(5, 180px); }
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(6, 200px); }
+      .gal-item:last-child { grid-column: span 1; }
     }
 
     /* === CONTACT === */
@@ -980,46 +989,37 @@
       <div class="gallery-grid fi fi-d1">
         <div class="gal-item">
           <div class="gal-inner">
-            <div class="gal-placeholder">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Add Photo</span>
-            </div>
+            <img src="frg-barbershop/IMG_4858.jpeg" alt="F.R.G. Salon &amp; Barber Shop exterior at 152 Avenue U, Brooklyn">
             <div class="gal-overlay"></div>
           </div>
         </div>
         <div class="gal-item">
           <div class="gal-inner">
-            <div class="gal-placeholder">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Add Photo</span>
-            </div>
+            <img src="frg-barbershop/IMG_4859.jpeg" alt="FRG Salon &amp; Barbershop interior">
             <div class="gal-overlay"></div>
           </div>
         </div>
         <div class="gal-item">
           <div class="gal-inner">
-            <div class="gal-placeholder">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Add Photo</span>
-            </div>
+            <img src="frg-barbershop/IMG_4866.jpeg" alt="FRG waiting area">
             <div class="gal-overlay"></div>
           </div>
         </div>
         <div class="gal-item">
           <div class="gal-inner">
-            <div class="gal-placeholder">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Add Photo</span>
-            </div>
+            <img src="frg-barbershop/IMG_4864.jpeg" alt="FRG front desk and entrance">
             <div class="gal-overlay"></div>
           </div>
         </div>
         <div class="gal-item">
           <div class="gal-inner">
-            <div class="gal-placeholder">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Add Photo</span>
-            </div>
+            <img src="frg-barbershop/IMG_4863.jpeg" alt="FRG barber station">
+            <div class="gal-overlay"></div>
+          </div>
+        </div>
+        <div class="gal-item">
+          <div class="gal-inner">
+            <img src="frg-barbershop/IMG_4867.jpeg" alt="FRG price list">
             <div class="gal-overlay"></div>
           </div>
         </div>
