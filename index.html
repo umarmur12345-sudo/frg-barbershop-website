@@ -262,6 +262,48 @@
       .services-top { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
     }
+
+    /* === PRICING === */
+    #pricing {
+      padding: 120px 0; background: var(--bg2);
+      border-top: 1px solid rgba(201,168,76,.1);
+    }
+    .pricing-head { text-align: center; margin-bottom: 60px; }
+    .pricing-head .divider { margin: 18px auto 16px; }
+    .pricing-note { font-size: .82rem; color: var(--muted); }
+    .pricing-table {
+      max-width: 660px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .pr-row {
+      display: flex; align-items: center;
+      padding: 18px 26px; background: var(--bg3);
+      position: relative; overflow: hidden;
+      transition: background var(--ease);
+    }
+    .pr-row::before {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0; width: 2px;
+      background: var(--gold);
+      transform: scaleY(0); transform-origin: bottom;
+      transition: transform .3s ease;
+    }
+    .pr-row:hover { background: rgba(201,168,76,.06); }
+    .pr-row:hover::before { transform: scaleY(1); }
+    .pr-name { font-size: .93rem; color: var(--cream); flex-shrink: 0; }
+    .pr-dots {
+      flex: 1; height: 1px; margin: 0 14px;
+      background: repeating-linear-gradient(
+        90deg, var(--muted) 0, var(--muted) 3px, transparent 3px, transparent 12px
+      );
+      opacity: .25;
+    }
+    .pr-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 600;
+      color: var(--gold); flex-shrink: 0;
+    }
+    .pricing-cta { text-align: center; margin-top: 48px; }
   </style>
 </head>
 <body>
@@ -394,6 +436,68 @@
       <div class="svc-notice fi">
         <span class="svc-notice-dot">✦</span>
         <p><strong>Women's Hair Services</strong> — Available exclusively at <em>FRG 3 (Bath Beach / Gravesend)</em>. Full cuts, coloring, and styling in a dedicated salon area.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="pricing-head fi">
+        <span class="section-label">Transparent Pricing</span>
+        <h2 class="section-title">Service Menu</h2>
+        <div class="divider"></div>
+        <p class="pricing-note">Prices shown for Sunset Park (FRG 1). Prices may vary slightly by location.</p>
+      </div>
+      <div class="pricing-table fi fi-d1">
+        <div class="pr-row">
+          <span class="pr-name">Full Service w/ Beard</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$40</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Skin Fade w/ Beard</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$40</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Regular Haircut w/ Beard</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$35</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Skin Fade / Tape-Up</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$25</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Regular Haircut</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$22</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Kids Skin Fade</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$22</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Kids Regular Haircut</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$20</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Adult Line-Up</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$15</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Kids Line-Up</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$12</span>
+        </div>
+      </div>
+      <div class="pricing-cta fi fi-d2">
+        <a href="#contact" class="btn btn-gold">Book Now</a>
       </div>
     </div>
   </section>
