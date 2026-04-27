@@ -515,6 +515,93 @@
     @media (max-width: 480px) {
       .gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(5, 180px); }
     }
+
+    /* === CONTACT === */
+    #contact {
+      padding: 140px 0; background: var(--bg);
+      border-top: 1px solid rgba(201,168,76,.1);
+      position: relative; overflow: hidden;
+    }
+    #contact::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 75% 55% at 50% 50%, rgba(201,168,76,.055) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .contact-inner {
+      position: relative; z-index: 2;
+      max-width: 620px; margin: 0 auto; text-align: center;
+    }
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700; line-height: 1.1; margin-bottom: 18px;
+    }
+    .contact-title em { font-style: italic; color: var(--gold); }
+    .contact-desc {
+      font-size: 1rem; color: var(--muted);
+      line-height: 1.78; margin-bottom: 44px;
+    }
+    .contact-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .contact-locs {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 2px; max-width: 560px; margin: 60px auto 0;
+    }
+    .contact-loc {
+      background: var(--bg2); padding: 18px 12px; text-align: center;
+    }
+    .contact-loc-tag {
+      font-size: .62rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 5px;
+    }
+    .contact-loc-name { font-size: .82rem; color: var(--cream); }
+    @media (max-width: 480px) {
+      .contact-locs { grid-template-columns: repeat(2,1fr); }
+      .contact-btns { flex-direction: column; align-items: center; }
+    }
+
+    /* === FOOTER === */
+    #footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 80px 0 36px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 56px; margin-bottom: 56px;
+    }
+    .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; color: var(--gold); }
+    .footer-brand-sub {
+      font-size: .6rem; letter-spacing: .26em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 18px;
+    }
+    .footer-tagline {
+      font-size: .875rem; color: var(--muted);
+      line-height: 1.72; margin-bottom: 26px; max-width: 270px;
+    }
+    .footer-socials { display: flex; gap: 8px; flex-wrap: wrap; }
+    .footer-col-title {
+      font-size: .68rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 18px; font-weight: 500;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: .855rem; color: var(--muted); transition: color var(--ease); }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom {
+      padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 14px;
+    }
+    .footer-copy { font-size: .78rem; color: var(--muted); }
+    .footer-legal { display: flex; gap: 22px; }
+    .footer-legal a { font-size: .78rem; color: var(--muted); transition: color var(--ease); }
+    .footer-legal a:hover { color: var(--gold); }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; } }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
@@ -965,6 +1052,91 @@
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner fi">
+        <span class="section-label">Ready?</span>
+        <h2 class="contact-title">Book Your<br><em>Next Cut</em></h2>
+        <p class="contact-desc">Walk-ins welcome at all four Brooklyn locations. For appointments, call your nearest shop or reach us on Instagram — we'll get you in.</p>
+        <div class="contact-btns">
+          <a href="tel:+17184398890" class="btn btn-gold">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.37h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.92 17z"/></svg>
+            Call to Book
+          </a>
+          <a href="https://www.instagram.com/frg_barber_shop" target="_blank" rel="noopener" class="btn btn-outline">DM on Instagram</a>
+          <a href="#locations" class="btn btn-outline">Find a Location</a>
+        </div>
+        <div class="contact-locs">
+          <div class="contact-loc"><div class="contact-loc-tag">FRG 1</div><div class="contact-loc-name">Sunset Park</div></div>
+          <div class="contact-loc"><div class="contact-loc-tag">FRG 2</div><div class="contact-loc-name">Bath Beach</div></div>
+          <div class="contact-loc"><div class="contact-loc-tag">FRG 3</div><div class="contact-loc-name">Bath Beach</div></div>
+          <div class="contact-loc"><div class="contact-loc-tag">FRG 4</div><div class="contact-loc-name">Gravesend</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">F.R.G.</div>
+          <div class="footer-brand-sub">Salon &amp; Barbershop · Brooklyn, NYC</div>
+          <p class="footer-tagline">Premium grooming rooted in Brooklyn's culture. Four locations serving Sunset Park, Bath Beach, and Gravesend.</p>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/FRG-Barbershop-417898354978197" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG 1 Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://www.instagram.com/frg_barber_shop" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG 1 Instagram"><svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></a>
+            <a href="https://www.facebook.com/los3brothers" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG 2 Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://www.instagram.com/frgbarbershop2" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG 2 Instagram"><svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></a>
+            <a href="https://www.facebook.com/FRGSalonBarberShop3" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG 3 Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://www.instagram.com/barbershop3frg" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG 3 Instagram"><svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></a>
+            <a href="https://www.facebook.com/profile.php?id=100095140941344" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG 4 Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://www.instagram.com/frgsalonandbarbershop4" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG 4 Instagram"><svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Services</div>
+          <ul class="footer-links">
+            <li><a href="#services">Haircuts</a></li>
+            <li><a href="#services">Skin Fades</a></li>
+            <li><a href="#services">Razor Shaves</a></li>
+            <li><a href="#services">Beard Trims</a></li>
+            <li><a href="#services">Hair Coloring</a></li>
+            <li><a href="#services">Kids Cuts</a></li>
+            <li><a href="#services">Women's Hair</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Locations</div>
+          <ul class="footer-links">
+            <li><a href="#locations">FRG 1 – Sunset Park</a></li>
+            <li><a href="#locations">FRG 2 – Bath Beach</a></li>
+            <li><a href="#locations">FRG 3 – Bath Beach</a></li>
+            <li><a href="#locations">FRG 4 – Gravesend</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Follow Us</div>
+          <ul class="footer-links">
+            <li><a href="https://www.instagram.com/frg_barber_shop" target="_blank" rel="noopener">@frg_barber_shop</a></li>
+            <li><a href="https://www.instagram.com/frgbarbershop2" target="_blank" rel="noopener">@frgbarbershop2</a></li>
+            <li><a href="https://www.instagram.com/barbershop3frg" target="_blank" rel="noopener">@barbershop3frg</a></li>
+            <li><a href="https://www.instagram.com/frgsalonandbarbershop4" target="_blank" rel="noopener">@frgsalonandbarbershop4</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 F.R.G. Salon &amp; Barbershop. All rights reserved. Brooklyn, NYC.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <!-- MOBILE NAV OVERLAY -->
   <div class="nav-mobile" id="navMobile">
     <a href="#services">Services</a>
@@ -998,6 +1170,14 @@
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
     document.querySelectorAll('.fi').forEach(el => observer.observe(el));
+
+    /* === SMOOTH ANCHOR SCROLL === */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
   </script>
 </body>
 </html>
