@@ -304,6 +304,68 @@
       color: var(--gold); flex-shrink: 0;
     }
     .pricing-cta { text-align: center; margin-top: 48px; }
+
+    /* === LOCATIONS === */
+    #locations {
+      padding: 120px 0; background: var(--bg);
+      border-top: 1px solid rgba(201,168,76,.1);
+    }
+    .locations-head { margin-bottom: 64px; }
+    .locations-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 2px;
+    }
+    .loc-card {
+      background: var(--bg2); padding: 44px 38px;
+      position: relative; overflow: hidden;
+      transition: background var(--ease);
+    }
+    .loc-card:hover { background: var(--bg3); }
+    .loc-num {
+      position: absolute; top: 18px; right: 28px;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem; font-weight: 900;
+      color: rgba(201,168,76,.07); line-height: 1;
+      pointer-events: none; user-select: none;
+    }
+    .loc-badge {
+      display: inline-block; margin-bottom: 18px;
+      padding: 4px 12px; font-size: .68rem;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(201,168,76,.35);
+      background: rgba(201,168,76,.07);
+    }
+    .loc-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 6px;
+    }
+    .loc-address {
+      font-size: .875rem; color: var(--muted);
+      line-height: 1.55; margin-bottom: 28px;
+    }
+    .loc-hours-label {
+      font-size: .68rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .loc-hours { margin-bottom: 26px; }
+    .hr-row {
+      display: flex; justify-content: space-between;
+      font-size: .855rem; padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    .hr-day { color: var(--muted); }
+    .hr-time { color: var(--cream); }
+    .loc-socials { display: flex; gap: 10px; margin-top: 22px; }
+    .soc-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px;
+      border: 1px solid var(--border); color: var(--muted);
+      transition: all var(--ease);
+    }
+    .soc-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,.08); }
+    .soc-btn svg { width: 15px; height: 15px; fill: currentColor; }
+    @media (max-width: 768px) { .locations-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -498,6 +560,109 @@
       </div>
       <div class="pricing-cta fi fi-d2">
         <a href="#contact" class="btn btn-gold">Book Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section id="locations">
+    <div class="container">
+      <div class="locations-head fi">
+        <span class="section-label">Find Us</span>
+        <h2 class="section-title">Four Locations<br>Across Brooklyn</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Deep roots in the neighborhoods we serve. Walk-ins welcome at all locations.</p>
+      </div>
+      <div class="locations-grid">
+
+        <!-- FRG 1 -->
+        <div class="loc-card fi">
+          <div class="loc-num">1</div>
+          <div class="loc-badge">FRG 1</div>
+          <h3 class="loc-name">Sunset Park</h3>
+          <p class="loc-address">Brooklyn, NY · Sunset Park</p>
+          <div class="loc-hours">
+            <div class="loc-hours-label">Hours</div>
+            <div class="hr-row"><span class="hr-day">Mon – Fri</span><span class="hr-time">9:00 AM – 8:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Saturday</span><span class="hr-time">9:00 AM – 7:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Sunday</span><span class="hr-time">10:00 AM – 6:00 PM</span></div>
+          </div>
+          <div class="loc-socials">
+            <a href="https://www.facebook.com/FRG-Barbershop-417898354978197" target="_blank" rel="noopener" class="soc-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/frg_barber_shop" target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- FRG 2 -->
+        <div class="loc-card fi fi-d1">
+          <div class="loc-num">2</div>
+          <div class="loc-badge">FRG 2</div>
+          <h3 class="loc-name">Bath Beach</h3>
+          <p class="loc-address">Brooklyn, NY · Bath Beach</p>
+          <div class="loc-hours">
+            <div class="loc-hours-label">Hours</div>
+            <div class="hr-row"><span class="hr-day">Mon – Fri</span><span class="hr-time">9:00 AM – 8:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Saturday</span><span class="hr-time">9:00 AM – 7:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Sunday</span><span class="hr-time">10:00 AM – 6:00 PM</span></div>
+          </div>
+          <div class="loc-socials">
+            <a href="https://www.facebook.com/los3brothers" target="_blank" rel="noopener" class="soc-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/frgbarbershop2" target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- FRG 3 -->
+        <div class="loc-card fi fi-d2">
+          <div class="loc-num">3</div>
+          <div class="loc-badge">FRG 3 · Women's Salon</div>
+          <h3 class="loc-name">Bath Beach</h3>
+          <p class="loc-address">Brooklyn, NY · Bath Beach / Gravesend border</p>
+          <div class="loc-hours">
+            <div class="loc-hours-label">Hours</div>
+            <div class="hr-row"><span class="hr-day">Mon – Fri</span><span class="hr-time">9:00 AM – 8:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Saturday</span><span class="hr-time">9:00 AM – 7:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Sunday</span><span class="hr-time">10:00 AM – 6:00 PM</span></div>
+          </div>
+          <div class="loc-socials">
+            <a href="https://www.facebook.com/FRGSalonBarberShop3" target="_blank" rel="noopener" class="soc-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/barbershop3frg" target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- FRG 4 -->
+        <div class="loc-card fi fi-d3">
+          <div class="loc-num">4</div>
+          <div class="loc-badge">FRG 4</div>
+          <h3 class="loc-name">Gravesend</h3>
+          <p class="loc-address">Brooklyn, NY · Gravesend</p>
+          <div class="loc-hours">
+            <div class="loc-hours-label">Hours</div>
+            <div class="hr-row"><span class="hr-day">Mon – Fri</span><span class="hr-time">9:00 AM – 8:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Saturday</span><span class="hr-time">9:00 AM – 7:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Sunday</span><span class="hr-time">10:00 AM – 6:00 PM</span></div>
+          </div>
+          <div class="loc-socials">
+            <a href="https://www.facebook.com/profile.php?id=100095140941344" target="_blank" rel="noopener" class="soc-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/frgsalonandbarbershop4" target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
