@@ -183,6 +183,85 @@
     @media (max-width: 480px) {
       .hero-stats { flex-wrap: wrap; gap: 20px; margin-top: 44px; }
     }
+
+    /* === SHARED SECTION UTILITIES === */
+    .section-label {
+      display: block; font-size: .72rem; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      font-weight: 700; color: var(--cream); margin-bottom: 14px;
+    }
+    .section-sub {
+      font-size: 1rem; color: var(--muted);
+      line-height: 1.75; max-width: 520px;
+    }
+    .divider {
+      width: 56px; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin: 18px 0 38px;
+    }
+    /* fade-in on scroll */
+    .fi { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+    .fi.visible { opacity: 1; transform: none; }
+    .fi-d1 { transition-delay: .1s; }
+    .fi-d2 { transition-delay: .2s; }
+    .fi-d3 { transition-delay: .3s; }
+    .fi-d4 { transition-delay: .4s; }
+    .fi-d5 { transition-delay: .5s; }
+
+    /* === SERVICES === */
+    #services {
+      padding: 120px 0; background: var(--bg);
+      border-top: 1px solid rgba(201,168,76,.12);
+    }
+    .services-top {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; align-items: end; margin-bottom: 64px;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+    }
+    .svc-card {
+      background: var(--bg2); padding: 44px 32px;
+      position: relative; overflow: hidden;
+      transition: background var(--ease), transform var(--ease);
+      cursor: default;
+    }
+    .svc-card::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; width: 100%; height: 2px;
+      background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .4s ease;
+    }
+    .svc-card:hover { background: var(--bg3); transform: translateY(-4px); }
+    .svc-card:hover::after { transform: scaleX(1); }
+    .svc-icon {
+      width: 44px; height: 44px; margin-bottom: 22px; color: var(--gold);
+    }
+    .svc-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .svc-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 600;
+      color: var(--cream); margin-bottom: 10px;
+    }
+    .svc-desc { font-size: .88rem; color: var(--muted); line-height: 1.72; }
+    .svc-notice {
+      margin-top: 2px; background: var(--bg3);
+      padding: 24px 32px; display: flex; align-items: center; gap: 14px;
+    }
+    .svc-notice-dot { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; }
+    .svc-notice p { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+    .svc-notice strong { color: var(--cream); }
+    .svc-notice em { color: var(--gold); font-style: normal; }
+    @media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 640px) {
+      .services-top { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -253,6 +332,72 @@
     </div>
   </section>
 
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="services-top">
+        <div class="fi">
+          <span class="section-label">What We Do</span>
+          <h2 class="section-title">The Full<br>Experience</h2>
+          <div class="divider"></div>
+        </div>
+        <p class="section-sub fi fi-d1">
+          From precision skin fades to classic razor shaves — every visit is a ritual.
+          Our barbers are trained in the full spectrum of men's grooming, with a
+          dedicated women's hair area at FRG 3.
+        </p>
+      </div>
+      <div class="services-grid">
+        <div class="svc-card fi">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M6 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm12 0a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM6 9c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm12 0c-.29 0-.62.02-.97.05C18.19 9.93 20 11.1 20 13v2h4v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+          <h3 class="svc-name">Precision Haircuts</h3>
+          <p class="svc-desc">Expert cuts tailored to your face shape, hair texture, and style. Classic to contemporary — every time.</p>
+        </div>
+        <div class="svc-card fi fi-d1">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M9.5 4a6.5 6.5 0 0 1 0 13H7V4h2.5zM7 2H5v20h2v-3h2.5a8.5 8.5 0 0 0 0-17H7V2z"/></svg>
+          </div>
+          <h3 class="svc-name">Skin Fades &amp; Tape-Ups</h3>
+          <p class="svc-desc">Zero-to-skin precision fading with razor-sharp lines. Our signature — what FRG is known for across Brooklyn.</p>
+        </div>
+        <div class="svc-card fi fi-d2">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 17 L9 11 L15 17 M9 11 L9 3"/><path d="M14 3 Q20 3 20 9 Q20 15 14 15"/></svg>
+          </div>
+          <h3 class="svc-name">Razor Shaves</h3>
+          <p class="svc-desc">Hot towel, straight-razor treatment for the smoothest shave of your life. Old-school craftsmanship, timeless results.</p>
+        </div>
+        <div class="svc-card fi fi-d1">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 7c0 4.4-3.6 8-8 8S4 11.4 4 7h16z"/><path d="M12 15v6M8 21h8M7 7c0-2.8 2.2-5 5-5s5 2.2 5 5"/></svg>
+          </div>
+          <h3 class="svc-name">Beard Trims &amp; Shaping</h3>
+          <p class="svc-desc">Sculpted beard work with scissors, clippers, and straight razor. Clean edges, full shape, and a crisp finish.</p>
+        </div>
+        <div class="svc-card fi fi-d2">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          </div>
+          <h3 class="svc-name">Hair Coloring</h3>
+          <p class="svc-desc">Full-spectrum coloring services — subtle highlights to bold transformations. Professional-grade results that last.</p>
+        </div>
+        <div class="svc-card fi fi-d3">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <h3 class="svc-name">Kids Cuts &amp; Line-Ups</h3>
+          <p class="svc-desc">Patient, experienced barbers who make every kid feel at ease. Great cuts for every age, every hair type.</p>
+        </div>
+      </div>
+      <div class="svc-notice fi">
+        <span class="svc-notice-dot">✦</span>
+        <p><strong>Women's Hair Services</strong> — Available exclusively at <em>FRG 3 (Bath Beach / Gravesend)</em>. Full cuts, coloring, and styling in a dedicated salon area.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- MOBILE NAV OVERLAY -->
   <div class="nav-mobile" id="navMobile">
     <a href="#services">Services</a>
@@ -280,6 +425,12 @@
       mobileNav.classList.remove('open');
       document.body.style.overflow = '';
     }));
+
+    /* === SCROLL FADE-IN === */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+    document.querySelectorAll('.fi').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
