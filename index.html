@@ -515,10 +515,13 @@
     .gal-item:hover { transform: translateY(-4px); border-color: rgba(201,168,76,.4); }
     .gal-media {
       position: relative; overflow: hidden;
-      aspect-ratio: 3 / 4;
       background: #111;
+      height: 0;
+      padding-bottom: 133.33%; /* 3:4 portrait — works everywhere */
+      aspect-ratio: 3 / 4;     /* modern browsers (ignored if no support) */
     }
     .gal-media img {
+      position: absolute; inset: 0;
       width: 100%; height: 100%;
       object-fit: cover; object-position: center;
       display: block;
@@ -549,7 +552,7 @@
     }
     @media (max-width: 768px) {
       .gallery-grid { grid-template-columns: 1fr; gap: 18px; }
-      .gal-media { aspect-ratio: 4 / 5; }
+      .gal-media { padding-bottom: 125%; aspect-ratio: 4 / 5; } /* 4:5 portrait */
     }
 
     /* === CONTACT === */
