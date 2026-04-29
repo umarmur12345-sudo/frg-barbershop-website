@@ -1014,7 +1014,7 @@
           <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         </a>
       </div>
-      <div class="gallery-grid fi fi-d1">
+      <div class="gallery-grid">
         <figure class="gal-item">
           <div class="gal-media">
             <img src="IMG_4858.webp" alt="F.R.G. Salon &amp; Barber Shop exterior at 152 Avenue U, Brooklyn" loading="lazy">
@@ -1252,10 +1252,20 @@
     }));
 
     /* === SCROLL FADE-IN === */
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
-    document.querySelectorAll('.fi').forEach(el => observer.observe(el));
+    const fiEls = document.querySelectorAll('.fi');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+      fiEls.forEach(el => observer.observe(el));
+    } else {
+      fiEls.forEach(el => el.classList.add('visible'));
+    }
+    /* Safety net: force everything visible after 1.5s in case the
+       observer didn't fire (zero-height parent, JS error, etc.) */
+    setTimeout(() => {
+      document.querySelectorAll('.fi:not(.visible)').forEach(el => el.classList.add('visible'));
+    }, 1500);
 
     /* === SMOOTH ANCHOR SCROLL === */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
