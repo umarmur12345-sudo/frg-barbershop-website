@@ -418,13 +418,16 @@
       width: 56px; height: 2px; background: var(--gold);
     }
     .team-initial {
-      width: 90px; height: 90px; border-radius: 50%;
-      background: rgba(201,168,76,.09);
-      border: 2px solid rgba(201,168,76,.45);
+      width: 110px; height: 110px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(232,201,126,.18), rgba(201,168,76,.06));
+      border: 2px solid rgba(201,168,76,.55);
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 24px;
       font-family: 'Playfair Display', serif;
-      font-size: 2rem; font-weight: 700; color: var(--gold);
+      font-size: 2.4rem; font-weight: 700;
+      letter-spacing: .04em;
+      color: var(--gold);
+      box-shadow: 0 8px 28px rgba(201,168,76,.18), inset 0 0 24px rgba(201,168,76,.06);
     }
     .team-name {
       font-family: 'Playfair Display', serif;
@@ -703,6 +706,76 @@
       .loc-card { padding: 38px 28px; }
       .nav-mobile a { font-size: 1.7rem; }
     }
+
+    /* === LOCATION MAP === */
+    .map-embed {
+      display: block;
+      width: 100%;
+      height: 400px;
+      border: 1px solid var(--border);
+      margin-top: 48px;
+      filter: grayscale(.4) contrast(1.05);
+    }
+    @media (max-width: 768px) {
+      .map-embed { height: 300px; margin-top: 32px; }
+    }
+
+    /* === STICKY MOBILE CTA === */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 950;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      background: rgba(13,13,13,.96);
+      backdrop-filter: blur(18px);
+      border-top: 1px solid var(--border);
+    }
+    .sticky-cta .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 14px 24px;
+      font-size: .82rem;
+    }
+    @media (max-width: 768px) {
+      .sticky-cta { display: block; }
+      body { padding-bottom: 78px; }
+    }
+
+    /* === GALLERY LIGHTBOX === */
+    .gal-item { cursor: zoom-in; }
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,.94);
+      align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img {
+      max-width: 92vw; max-height: 86vh;
+      object-fit: contain;
+      box-shadow: 0 20px 60px rgba(0,0,0,.8);
+    }
+    .lb-btn {
+      position: absolute;
+      background: rgba(13,13,13,.7);
+      border: 1px solid var(--border);
+      color: var(--cream);
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: all var(--ease);
+    }
+    .lb-btn:hover { background: var(--gold); color: #0d0d0d; border-color: var(--gold); }
+    .lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
+    .lb-close { right: 16px; top: 16px; }
+    .lb-btn svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    @media (max-width: 480px) {
+      .lb-prev { left: 8px; }
+      .lb-next { right: 8px; }
+      .lb-btn { width: 42px; height: 42px; }
+    }
   </style>
 </head>
 <body>
@@ -924,6 +997,12 @@
         </div>
 
       </div>
+      <iframe
+        class="map-embed fi fi-d2"
+        src="https://www.google.com/maps?q=152+Avenue+U,+Brooklyn,+NY+11223&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Map showing F.R.G. Salon &amp; Barbershop at 152 Avenue U, Brooklyn, NY 11223"></iframe>
     </div>
   </section>
 
@@ -938,7 +1017,7 @@
       </div>
       <div class="team-grid team-grid--single">
         <div class="team-card fi">
-          <div class="team-initial">F</div>
+          <div class="team-initial">FL</div>
           <h3 class="team-name">Francisco López</h3>
           <div class="team-role">Founder</div>
           <p class="team-bio">The visionary behind FRG's signature aesthetic. Francisco set the standard for precision and artistry that defines every cut at the shop.</p>
@@ -1215,13 +1294,29 @@
       </div>
       <div class="footer-bottom">
         <p class="footer-copy">&copy; 2025 F.R.G. Salon &amp; Barbershop. All rights reserved. 152 Avenue U, Brooklyn.</p>
-        <div class="footer-legal">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-        </div>
       </div>
     </div>
   </footer>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="sticky-cta">
+    <a href="https://booksy.com/en-us/1178968_frgsalon-barbershopn04_barber-shop_29902_brooklyn#ba_s=seo"
+       target="_blank" rel="noopener noreferrer" class="btn btn-gold">Book on Booksy</a>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lb-btn lb-close" id="lbClose" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous image">
+      <svg viewBox="0 0 24 24"><polyline points="15 6 9 12 15 18"/></svg>
+    </button>
+    <img class="lightbox-img" id="lbImg" alt="">
+    <button class="lb-btn lb-next" id="lbNext" aria-label="Next image">
+      <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+    </button>
+  </div>
 
   <!-- MOBILE NAV OVERLAY -->
   <div class="nav-mobile" id="navMobile">
@@ -1273,6 +1368,43 @@
         const target = document.querySelector(this.getAttribute('href'));
         if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
+    });
+
+    /* === GALLERY LIGHTBOX === */
+    const galImgs = Array.from(document.querySelectorAll('.gal-item .gal-media img'));
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+    const lbPrev = document.getElementById('lbPrev');
+    const lbNext = document.getElementById('lbNext');
+    let lbIndex = 0;
+
+    const showLb = (i) => {
+      if (!galImgs.length) return;
+      lbIndex = (i + galImgs.length) % galImgs.length;
+      lbImg.src = galImgs[lbIndex].getAttribute('src');
+      lbImg.alt = galImgs[lbIndex].getAttribute('alt') || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+    const hideLb = () => {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    galImgs.forEach((img, i) => {
+      const item = img.closest('.gal-item');
+      if (item) item.addEventListener('click', () => showLb(i));
+    });
+    lbClose.addEventListener('click', hideLb);
+    lbPrev.addEventListener('click', (e) => { e.stopPropagation(); showLb(lbIndex - 1); });
+    lbNext.addEventListener('click', (e) => { e.stopPropagation(); showLb(lbIndex + 1); });
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) hideLb(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') hideLb();
+      else if (e.key === 'ArrowLeft') showLb(lbIndex - 1);
+      else if (e.key === 'ArrowRight') showLb(lbIndex + 1);
     });
   </script>
 </body>
