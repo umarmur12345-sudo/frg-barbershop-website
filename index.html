@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>F.R.G. Salon &amp; Barbershop | Brooklyn, NYC</title>
+  <title>F.R.G. Salon &amp; Barbershop | 152 Avenue U, Brooklyn, NY</title>
   <meta name="description" content="Premium haircuts, skin fades, razor shaves and grooming in Brooklyn, NYC. Three locations in Bath Beach and Gravesend.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -177,11 +177,16 @@
     }
     @media (max-width: 768px) {
       .hero-monogram { display: none; }
-      .hero-stats { gap: 24px; }
+      .hero-stats {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+        margin-top: 48px;
+        padding-top: 28px;
+      }
+      .hero-stat { display: flex; align-items: baseline; gap: 14px; }
+      .hero-stat-num { font-size: 2rem; }
       .hero-actions { flex-direction: column; align-items: flex-start; }
-    }
-    @media (max-width: 480px) {
-      .hero-stats { flex-wrap: wrap; gap: 20px; margin-top: 44px; }
     }
 
     /* === SHARED SECTION UTILITIES === */
@@ -271,16 +276,38 @@
     .pricing-head { text-align: center; margin-bottom: 60px; }
     .pricing-head .divider { margin: 18px auto 16px; }
     .pricing-note { font-size: .82rem; color: var(--muted); }
-    .pricing-table {
-      max-width: 660px; margin: 0 auto;
-      display: flex; flex-direction: column; gap: 2px;
+    .pricing-cats {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
     }
+    .pr-cat { background: var(--bg3); }
+    .pr-cat-summary {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 22px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--gold); letter-spacing: .04em;
+      border-bottom: 1px solid var(--border);
+      list-style: none;
+    }
+    .pr-cat-summary::-webkit-details-marker { display: none; }
+    .pr-cat-toggle {
+      display: none;
+      width: 14px; height: 14px;
+      border-right: 1.5px solid var(--gold);
+      border-bottom: 1.5px solid var(--gold);
+      transform: rotate(45deg);
+      transition: transform .25s ease;
+    }
+    .pr-cat-list { display: flex; flex-direction: column; }
     .pr-row {
       display: flex; align-items: center;
-      padding: 18px 26px; background: var(--bg3);
+      padding: 14px 22px;
       position: relative; overflow: hidden;
       transition: background var(--ease);
+      border-bottom: 1px solid rgba(255,255,255,.04);
     }
+    .pr-row:last-child { border-bottom: none; }
     .pr-row::before {
       content: ''; position: absolute;
       left: 0; top: 0; bottom: 0; width: 2px;
@@ -290,9 +317,9 @@
     }
     .pr-row:hover { background: rgba(201,168,76,.06); }
     .pr-row:hover::before { transform: scaleY(1); }
-    .pr-name { font-size: .93rem; color: var(--cream); flex-shrink: 0; }
+    .pr-name { font-size: .9rem; color: var(--cream); flex-shrink: 0; }
     .pr-dots {
-      flex: 1; height: 1px; margin: 0 14px;
+      flex: 1; height: 1px; margin: 0 12px;
       background: repeating-linear-gradient(
         90deg, var(--muted) 0, var(--muted) 3px, transparent 3px, transparent 12px
       );
@@ -300,10 +327,89 @@
     }
     .pr-price {
       font-family: 'Playfair Display', serif;
-      font-size: 1.05rem; font-weight: 600;
+      font-size: 1rem; font-weight: 600;
       color: var(--gold); flex-shrink: 0;
     }
     .pricing-cta { text-align: center; margin-top: 48px; }
+    @media (max-width: 1024px) {
+      .pricing-cats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .pricing-cats { grid-template-columns: 1fr; gap: 2px; max-width: 600px; }
+      .pr-cat-summary { cursor: pointer; }
+      .pr-cat-toggle { display: block; }
+      .pr-cat:not(.open) .pr-cat-list { display: none; }
+      .pr-cat:not(.open) .pr-cat-summary { border-bottom: none; }
+      .pr-cat.open .pr-cat-toggle { transform: rotate(-135deg); }
+    }
+
+    /* === LOCATION MAP === */
+    .map-embed {
+      width: 100%;
+      height: 400px;
+      border: 1px solid var(--border);
+      margin-top: 48px;
+      filter: grayscale(.4) contrast(1.05);
+    }
+    @media (max-width: 768px) {
+      .map-embed { height: 300px; margin-top: 32px; }
+    }
+
+    /* === STICKY MOBILE CTA === */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 950;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      background: rgba(13,13,13,.96);
+      backdrop-filter: blur(18px);
+      border-top: 1px solid var(--border);
+    }
+    .sticky-cta .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 14px 24px;
+      font-size: .82rem;
+    }
+    @media (max-width: 768px) {
+      .sticky-cta { display: block; }
+      body { padding-bottom: 76px; }
+    }
+
+    /* === LIGHTBOX === */
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,.94);
+      align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img {
+      max-width: 92vw; max-height: 86vh;
+      object-fit: contain;
+      box-shadow: 0 20px 60px rgba(0,0,0,.8);
+    }
+    .lb-btn {
+      position: absolute;
+      background: rgba(13,13,13,.7);
+      border: 1px solid var(--border);
+      color: var(--cream);
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: all var(--ease);
+    }
+    .lb-btn:hover { background: var(--gold); color: #0d0d0d; border-color: var(--gold); }
+    .lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
+    .lb-close { right: 16px; top: 16px; }
+    .lb-btn svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    @media (max-width: 480px) {
+      .lb-prev { left: 8px; }
+      .lb-next { right: 8px; }
+      .lb-btn { width: 42px; height: 42px; }
+    }
 
     /* === LOCATIONS === */
     #locations {
@@ -390,13 +496,16 @@
       width: 56px; height: 2px; background: var(--gold);
     }
     .team-initial {
-      width: 90px; height: 90px; border-radius: 50%;
-      background: rgba(201,168,76,.09);
-      border: 2px solid rgba(201,168,76,.45);
+      width: 110px; height: 110px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(232,201,126,.18), rgba(201,168,76,.06));
+      border: 2px solid rgba(201,168,76,.55);
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 24px;
       font-family: 'Playfair Display', serif;
-      font-size: 2rem; font-weight: 700; color: var(--gold);
+      font-size: 2.4rem; font-weight: 700;
+      letter-spacing: .04em;
+      color: var(--gold);
+      box-shadow: 0 8px 28px rgba(201,168,76,.18), inset 0 0 24px rgba(201,168,76,.06);
     }
     .team-name {
       font-family: 'Playfair Display', serif;
@@ -477,7 +586,7 @@
       grid-template-rows: 220px 220px 220px;
       gap: 2px;
     }
-    .gal-item { overflow: hidden; position: relative; background: var(--bg3); }
+    .gal-item { overflow: hidden; position: relative; background: var(--bg3); cursor: pointer; }
     .gal-item:first-child { grid-row: span 2; }
     .gal-item:last-child { grid-column: 2 / span 2; }
     .gal-inner {
@@ -515,15 +624,28 @@
     .gal-item:hover .gal-overlay { opacity: 1; }
     @media (max-width: 768px) {
       .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(3, 200px);
+        display: flex;
+        grid-template-columns: none;
+        grid-template-rows: none;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px;
+        padding-bottom: 14px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--gold) transparent;
       }
-      .gal-item:first-child { grid-row: span 1; }
-      .gal-item:last-child { grid-column: span 1; }
-    }
-    @media (max-width: 480px) {
-      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(6, 200px); }
-      .gal-item:last-child { grid-column: span 1; }
+      .gallery-grid::-webkit-scrollbar { height: 4px; }
+      .gallery-grid::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+      .gal-item {
+        flex: 0 0 82%;
+        height: 280px;
+        scroll-snap-align: start;
+      }
+      .gal-item:first-child, .gal-item:last-child {
+        grid-row: auto;
+        grid-column: auto;
+      }
     }
 
     /* === CONTACT === */
@@ -604,9 +726,6 @@
       justify-content: space-between; flex-wrap: wrap; gap: 14px;
     }
     .footer-copy { font-size: .78rem; color: var(--muted); }
-    .footer-legal { display: flex; gap: 22px; }
-    .footer-legal a { font-size: .78rem; color: var(--muted); transition: color var(--ease); }
-    .footer-legal a:hover { color: var(--gold); }
     @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; } }
     @media (max-width: 480px) {
       .footer-grid { grid-template-columns: 1fr; }
@@ -757,51 +876,93 @@
         <div class="divider"></div>
         <p class="pricing-note">Prices may vary slightly by location. Walk-ins welcome.</p>
       </div>
-      <div class="pricing-table fi fi-d1">
-        <div class="pr-row">
-          <span class="pr-name">Full Service w/ Beard</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$40</span>
+      <div class="pricing-cats fi fi-d1">
+        <div class="pr-cat open">
+          <div class="pr-cat-summary">
+            <span>Men's</span>
+            <span class="pr-cat-toggle" aria-hidden="true"></span>
+          </div>
+          <div class="pr-cat-list">
+            <div class="pr-row">
+              <span class="pr-name">Full Service w/ Beard</span>
+              <div class="pr-dots"></div>
+              <span class="pr-price">$40</span>
+            </div>
+            <div class="pr-row">
+              <span class="pr-name">Skin Fade w/ Beard</span>
+              <div class="pr-dots"></div>
+              <span class="pr-price">$40</span>
+            </div>
+            <div class="pr-row">
+              <span class="pr-name">Regular Haircut w/ Beard</span>
+              <div class="pr-dots"></div>
+              <span class="pr-price">$35</span>
+            </div>
+            <div class="pr-row">
+              <span class="pr-name">Skin Fade / Tape-Up</span>
+              <div class="pr-dots"></div>
+              <span class="pr-price">$25</span>
+            </div>
+            <div class="pr-row">
+              <span class="pr-name">Regular Haircut</span>
+              <div class="pr-dots"></div>
+              <span class="pr-price">$22</span>
+            </div>
+            <div class="pr-row">
+              <span class="pr-name">Adult Line-Up</span>
+              <div class="pr-dots"></div>
+              <span class="pr-price">$15</span>
+            </div>
+          </div>
         </div>
-        <div class="pr-row">
-          <span class="pr-name">Skin Fade w/ Beard</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$40</span>
+        <div class="pr-cat open">
+          <div class="pr-cat-summary">
+            <span>Eyebrow</span>
+            <span class="pr-cat-toggle" aria-hidden="true"></span>
+          </div>
+          <div class="pr-cat-list">
+            <div class="pr-row">
+              <span class="pr-name">Eyebrow Shape-Up</span>
+              <div class="pr-dots"></div>
+              <span class="pr-price">Inquire</span>
+            </div>
+          </div>
         </div>
-        <div class="pr-row">
-          <span class="pr-name">Regular Haircut w/ Beard</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$35</span>
+        <div class="pr-cat open">
+          <div class="pr-cat-summary">
+            <span>Women's</span>
+            <span class="pr-cat-toggle" aria-hidden="true"></span>
+          </div>
+          <div class="pr-cat-list">
+            <div class="pr-row">
+              <span class="pr-name">Cut, Color &amp; Styling</span>
+              <div class="pr-dots"></div>
+              <span class="pr-price">Inquire</span>
+            </div>
+          </div>
         </div>
-        <div class="pr-row">
-          <span class="pr-name">Skin Fade / Tape-Up</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$25</span>
-        </div>
-        <div class="pr-row">
-          <span class="pr-name">Regular Haircut</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$22</span>
-        </div>
-        <div class="pr-row">
-          <span class="pr-name">Kids Skin Fade</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$22</span>
-        </div>
-        <div class="pr-row">
-          <span class="pr-name">Kids Regular Haircut</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$20</span>
-        </div>
-        <div class="pr-row">
-          <span class="pr-name">Adult Line-Up</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$15</span>
-        </div>
-        <div class="pr-row">
-          <span class="pr-name">Kids Line-Up</span>
-          <div class="pr-dots"></div>
-          <span class="pr-price">$12</span>
+        <div class="pr-cat open">
+          <div class="pr-cat-summary">
+            <span>Kids</span>
+            <span class="pr-cat-toggle" aria-hidden="true"></span>
+          </div>
+          <div class="pr-cat-list">
+            <div class="pr-row">
+              <span class="pr-name">Kids Skin Fade</span>
+              <div class="pr-dots"></div>
+              <span class="pr-price">$22</span>
+            </div>
+            <div class="pr-row">
+              <span class="pr-name">Kids Regular Haircut</span>
+              <div class="pr-dots"></div>
+              <span class="pr-price">$20</span>
+            </div>
+            <div class="pr-row">
+              <span class="pr-name">Kids Line-Up</span>
+              <div class="pr-dots"></div>
+              <span class="pr-price">$12</span>
+            </div>
+          </div>
         </div>
       </div>
       <div class="pricing-cta fi fi-d2">
@@ -884,6 +1045,12 @@
         </div>
 
       </div>
+      <iframe
+        class="map-embed fi fi-d2"
+        src="https://www.google.com/maps?q=152+Avenue+U,+Brooklyn,+NY+11223&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Map showing F.R.G. Salon &amp; Barbershop at 152 Avenue U, Brooklyn, NY 11223"></iframe>
     </div>
   </section>
 
@@ -898,7 +1065,7 @@
       </div>
       <div class="team-grid">
         <div class="team-card fi">
-          <div class="team-initial">F</div>
+          <div class="team-initial">FL</div>
           <h3 class="team-name">Francisco López</h3>
           <div class="team-role">Co-Founder</div>
           <p class="team-bio">The visionary behind FRG's signature aesthetic. Francisco set the standard for precision and artistry that defines every cut across all four locations.</p>
@@ -1099,13 +1266,29 @@
       </div>
       <div class="footer-bottom">
         <p class="footer-copy">&copy; 2025 F.R.G. Salon &amp; Barbershop. All rights reserved. Brooklyn, NYC.</p>
-        <div class="footer-legal">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-        </div>
       </div>
     </div>
   </footer>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="sticky-cta">
+    <a href="https://booksy.com/en-us/1178968_frgsalon-barbershopn04_barber-shop_29902_brooklyn#ba_s=seo"
+       target="_blank" rel="noopener" class="btn btn-gold">Book on Booksy</a>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lb-btn lb-close" id="lbClose" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous image">
+      <svg viewBox="0 0 24 24"><polyline points="15 6 9 12 15 18"/></svg>
+    </button>
+    <img class="lightbox-img" id="lbImg" alt="">
+    <button class="lb-btn lb-next" id="lbNext" aria-label="Next image">
+      <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+    </button>
+  </div>
 
   <!-- MOBILE NAV OVERLAY -->
   <div class="nav-mobile" id="navMobile">
@@ -1147,6 +1330,53 @@
         const target = document.querySelector(this.getAttribute('href'));
         if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
+    });
+
+    /* === PRICING ACCORDION (mobile only) === */
+    const mqMobile = window.matchMedia('(max-width: 768px)');
+    document.querySelectorAll('.pr-cat-summary').forEach(sum => {
+      sum.addEventListener('click', () => {
+        if (!mqMobile.matches) return;
+        sum.parentElement.classList.toggle('open');
+      });
+    });
+
+    /* === GALLERY LIGHTBOX === */
+    const galItems = Array.from(document.querySelectorAll('.gal-item img'));
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+    const lbPrev = document.getElementById('lbPrev');
+    const lbNext = document.getElementById('lbNext');
+    let lbIndex = 0;
+
+    const showLb = (i) => {
+      if (!galItems.length) return;
+      lbIndex = (i + galItems.length) % galItems.length;
+      const src = galItems[lbIndex].getAttribute('src');
+      const alt = galItems[lbIndex].getAttribute('alt') || '';
+      lbImg.src = src;
+      lbImg.alt = alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+    const hideLb = () => {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    galItems.forEach((img, i) => {
+      img.parentElement.parentElement.addEventListener('click', () => showLb(i));
+    });
+    lbClose.addEventListener('click', hideLb);
+    lbPrev.addEventListener('click', (e) => { e.stopPropagation(); showLb(lbIndex - 1); });
+    lbNext.addEventListener('click', (e) => { e.stopPropagation(); showLb(lbIndex + 1); });
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) hideLb(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') hideLb();
+      else if (e.key === 'ArrowLeft') showLb(lbIndex - 1);
+      else if (e.key === 'ArrowRight') showLb(lbIndex + 1);
     });
   </script>
 </body>
