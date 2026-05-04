@@ -376,10 +376,10 @@
     .team-head { text-align: center; margin-bottom: 64px; }
     .team-head .divider { margin: 18px auto 0; }
     .team-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+      display: grid; grid-template-columns: repeat(5,1fr); gap: 2px;
     }
     .team-card {
-      background: var(--bg3); padding: 52px 36px 44px;
+      background: var(--bg3); padding: 52px 28px 44px;
       text-align: center; position: relative; overflow: hidden;
       transition: transform var(--ease);
     }
@@ -389,18 +389,16 @@
       top: 0; left: 50%; transform: translateX(-50%);
       width: 56px; height: 2px; background: var(--gold);
     }
-    .team-initial {
-      width: 90px; height: 90px; border-radius: 50%;
-      background: rgba(201,168,76,.09);
+    .team-photo {
+      width: 130px; height: 130px; border-radius: 50%;
+      object-fit: cover;
       border: 2px solid rgba(201,168,76,.45);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 24px;
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem; font-weight: 700; color: var(--gold);
+      display: block; margin: 0 auto 24px;
+      background: rgba(201,168,76,.09);
     }
     .team-name {
       font-family: 'Playfair Display', serif;
-      font-size: 1.35rem; font-weight: 600;
+      font-size: 1.35rem; font-weight: 700;
       color: var(--cream); margin-bottom: 6px;
     }
     .team-role {
@@ -408,7 +406,8 @@
       text-transform: uppercase; color: var(--gold);
       margin-bottom: 18px;
     }
-    .team-bio { font-size: .875rem; color: var(--muted); line-height: 1.75; }
+    .team-bio { font-size: .875rem; color: var(--muted); line-height: 1.75; text-align: left; }
+    @media (max-width: 1100px) { .team-grid { grid-template-columns: repeat(3,1fr); } }
     @media (max-width: 768px) { .team-grid { grid-template-columns: 1fr; } }
 
     /* === TESTIMONIALS === */
@@ -892,28 +891,40 @@
     <div class="container">
       <div class="team-head fi">
         <span class="section-label">The People Behind It</span>
-        <h2 class="section-title">Meet the Founders</h2>
+        <h2 class="section-title">Meet the Team</h2>
         <div class="divider"></div>
-        <p class="section-sub" style="margin: 0 auto;">Three brothers. One vision. Built from the ground up in Brooklyn.</p>
+        <p class="section-sub" style="margin: 0 auto;">The skilled hands and friendly faces behind every cut at FRG.</p>
       </div>
       <div class="team-grid">
         <div class="team-card fi">
-          <div class="team-initial">F</div>
-          <h3 class="team-name">Francisco López</h3>
-          <div class="team-role">Co-Founder</div>
-          <p class="team-bio">The visionary behind FRG's signature aesthetic. Francisco set the standard for precision and artistry that defines every cut across all four locations.</p>
+          <img class="team-photo" src="images/IMG_3937.jpeg" alt="Frank, Owner of FRG Barbershop">
+          <h3 class="team-name">Frank</h3>
+          <div class="team-role">Owner</div>
+          <p class="team-bio">Frank is a seasoned professional with over 30 years of experience in barbering and the proud owner of FRG Barbershop No. 4. Known for his speed and precision, he delivers high-quality cuts efficiently without ever compromising on detail. Highly skilled and versatile, Frank works confidently with all hair types and styles. He is especially great with kids' haircuts, creating a comfortable and friendly experience that puts both parents and children at ease. Sociable and welcoming, Frank has built a strong reputation not just for his talent, but for the positive and relaxed atmosphere he brings to his barbershop every day.</p>
         </div>
         <div class="team-card fi fi-d1">
-          <div class="team-initial">R</div>
-          <h3 class="team-name">Roberto López</h3>
-          <div class="team-role">Co-Founder</div>
-          <p class="team-bio">Roberto brings the business spirit and community heart to FRG. A Brooklyn native dedicated to building something real, lasting, and rooted in the culture.</p>
+          <img class="team-photo" src="images/IMG_3923.jpeg" alt="John, Barber at FRG Barbershop">
+          <h3 class="team-name">John</h3>
+          <div class="team-role">Barber</div>
+          <p class="team-bio">John is an experienced barber with over 5 years in the industry, known for his skill, precision, and dedication to his craft. He handles all types of haircuts and is especially talented at creating custom designs, giving each client a unique and personalized look. John pays close attention to detail, particularly with beard work, ensuring every shape and line is clean, sharp, and well-balanced. Friendly and easy to work with, he creates a comfortable atmosphere where clients feel heard and taken care of every time they sit in his chair.</p>
         </div>
         <div class="team-card fi fi-d2">
-          <div class="team-initial">J</div>
-          <h3 class="team-name">Jorge López</h3>
-          <div class="team-role">Co-Founder</div>
-          <p class="team-bio">Jorge's hands are behind some of Brooklyn's cleanest fades. His technical mastery and passion for the craft elevate the entire FRG team's standard of work.</p>
+          <img class="team-photo" src="images/IMG_3929.jpeg" alt="Ricardo, Barber at FRG Barbershop">
+          <h3 class="team-name">Ricardo</h3>
+          <div class="team-role">Barber</div>
+          <p class="team-bio">Ricardo is a talented barber with 5 years of experience, known for his clean, precise fades and strong attention to detail. He works confidently with both clippers and scissors, making him versatile enough to handle everything from sharp modern cuts to longer textured styles. Ricardo also specializes in custom hair designs, detailed beard grooming, and shaping. To top it off, he offers relaxing facial massages, giving every client not just a fresh cut, but a complete and refreshing grooming experience.</p>
+        </div>
+        <div class="team-card fi fi-d3">
+          <img class="team-photo" src="images/IMG_3932.jpeg" alt="Dario, Barber at FRG Barbershop">
+          <h3 class="team-name">Dario</h3>
+          <div class="team-role">Barber</div>
+          <p class="team-bio">Dario is a skilled and dedicated barber with 5 years of hands-on experience in grooming and style. Known for his attention to detail and friendly approach, he offers a full range of services tailored to every client's needs. From clean precise haircuts to stylish kids' cuts, Dario brings patience and professionalism to every appointment. He also specializes in perms and men's hair dye, helping clients achieve bold new looks or subtle transformations. For those looking to elevate their experience, Dario provides VIP haircuts with extra care and precision, along with relaxing facial massages that leave clients feeling refreshed and confident.</p>
+        </div>
+        <div class="team-card fi fi-d4">
+          <img class="team-photo" src="images/IMG_3918.jpeg" alt="Esther, Stylist at FRG Barbershop">
+          <h3 class="team-name">Esther</h3>
+          <div class="team-role">Stylist</div>
+          <p class="team-bio">Description coming soon. Stay tuned to learn more about Esther and the services she offers.</p>
         </div>
       </div>
     </div>
