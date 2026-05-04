@@ -715,6 +715,50 @@
       .map-embed { height: 300px; margin-top: 32px; }
     }
 
+    /* === FLOATING WHATSAPP === */
+    .wa-float {
+      position: fixed;
+      right: 28px;
+      bottom: 28px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(37,211,102,.35), 0 2px 6px rgba(0,0,0,.25);
+      z-index: 960;
+      transition: transform .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease);
+      text-decoration: none;
+    }
+    .wa-float:hover,
+    .wa-float:focus-visible {
+      background: #1ebe5a;
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 10px 26px rgba(37,211,102,.45), 0 3px 8px rgba(0,0,0,.3);
+    }
+    .wa-float:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+    .wa-float svg {
+      width: 32px;
+      height: 32px;
+      fill: #fff;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .wa-float {
+        width: 52px;
+        height: 52px;
+        right: 16px;
+        bottom: calc(90px + env(safe-area-inset-bottom));
+      }
+      .wa-float svg { width: 28px; height: 28px; }
+    }
+
     /* === STICKY MOBILE CTA === */
     .sticky-cta {
       display: none;
@@ -1320,6 +1364,17 @@
       </div>
     </div>
   </footer>
+
+  <!-- FLOATING WHATSAPP -->
+  <a class="wa-float"
+     href="https://wa.me/13473403926?text=Hi%21%20I%20found%20you%20on%20your%20website%20and%20I%20have%20a%20question."
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Chat with FRG on WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M19.11 4.91A10.45 10.45 0 0 0 11.66.5C5.84.5 1.1 5.24 1.1 11.06c0 1.86.49 3.68 1.42 5.28L1 23.5l7.34-1.49a10.5 10.5 0 0 0 3.32.54h.01c5.82 0 10.56-4.74 10.56-10.56 0-2.82-1.1-5.47-3.12-7.08zm-7.45 16.24h-.01a8.7 8.7 0 0 1-4.43-1.21l-.32-.19-4.36.88.93-4.25-.21-.34a8.66 8.66 0 0 1-1.34-4.62c0-4.79 3.9-8.69 8.74-8.69 2.33 0 4.52.91 6.17 2.56a8.65 8.65 0 0 1 2.56 6.16c-.01 4.79-3.91 8.7-8.73 8.7zm4.78-6.51c-.26-.13-1.55-.76-1.79-.85-.24-.09-.41-.13-.59.13-.17.26-.67.85-.83 1.02-.15.17-.3.2-.56.07-.26-.13-1.11-.41-2.11-1.31-.78-.7-1.31-1.55-1.46-1.81-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.07-.13-.59-1.42-.81-1.95-.21-.51-.43-.44-.59-.45-.15-.01-.32-.01-.5-.01-.17 0-.45.06-.69.32-.24.26-.91.89-.91 2.17 0 1.28.93 2.52 1.06 2.69.13.17 1.84 2.81 4.45 3.94.62.27 1.11.43 1.49.55.62.2 1.19.17 1.64.1.5-.07 1.55-.63 1.77-1.24.22-.61.22-1.13.15-1.24-.06-.11-.24-.17-.5-.3z"/>
+    </svg>
+  </a>
 
   <!-- STICKY MOBILE CTA -->
   <div class="sticky-cta">
