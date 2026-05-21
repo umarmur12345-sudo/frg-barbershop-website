@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>F.R.G. Salon &amp; Barbershop | 152 Avenue U, Brooklyn</title>
-  <meta name="description" content="Premium haircuts, skin fades, razor shaves, women's hair, color, and grooming at F.R.G. No. 4 — 152 Avenue U, Brooklyn, NY.">
+  <title>F.R.G. Salon &amp; Barbershop | Brooklyn, NYC</title>
+  <meta name="description" content="Premium haircuts, skin fades, razor shaves and grooming in Brooklyn, NYC. Three locations in Bath Beach and Gravesend.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
@@ -272,25 +272,12 @@
     .pricing-head .divider { margin: 18px auto 16px; }
     .pricing-note { font-size: .82rem; color: var(--muted); }
     .pricing-table {
-      max-width: 1040px; margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px 40px;
+      max-width: 660px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 2px;
     }
-    .pr-group { display: flex; flex-direction: column; gap: 2px; }
-    .pr-cat {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem; font-weight: 700;
-      color: var(--gold);
-      letter-spacing: .14em; text-transform: uppercase;
-      padding: 0 0 10px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 8px;
-    }
-    .pr-group .pr-cat:not(:first-child) { margin-top: 26px; }
     .pr-row {
       display: flex; align-items: center;
-      padding: 16px 22px; background: var(--bg3);
+      padding: 18px 26px; background: var(--bg3);
       position: relative; overflow: hidden;
       transition: background var(--ease);
     }
@@ -316,21 +303,7 @@
       font-size: 1.05rem; font-weight: 600;
       color: var(--gold); flex-shrink: 0;
     }
-    .pricing-foot {
-      max-width: 1040px; margin: 44px auto 0;
-      padding: 22px 26px;
-      text-align: center;
-      border: 1px solid var(--border);
-      background: rgba(201,168,76,.04);
-      font-family: 'Playfair Display', serif;
-      font-size: .9rem; font-weight: 600;
-      letter-spacing: .26em; text-transform: uppercase;
-      color: var(--gold);
-    }
-    .pricing-cta { text-align: center; margin-top: 36px; }
-    @media (max-width: 768px) {
-      .pricing-table { grid-template-columns: 1fr; gap: 28px; max-width: 640px; }
-    }
+    .pricing-cta { text-align: center; margin-top: 48px; }
 
     /* === LOCATIONS === */
     #locations {
@@ -394,7 +367,6 @@
     .soc-btn svg { width: 15px; height: 15px; fill: currentColor; }
     @media (max-width: 900px) { .locations-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 580px) { .locations-grid { grid-template-columns: 1fr; } }
-    .locations-grid--single { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
 
     /* === TEAM === */
     #team {
@@ -407,7 +379,7 @@
       display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
     }
     .team-card {
-      background: var(--bg3); padding: 52px 28px 44px;
+      background: var(--bg3); padding: 52px 36px 44px;
       text-align: center; position: relative; overflow: hidden;
       transition: transform var(--ease);
     }
@@ -417,16 +389,18 @@
       top: 0; left: 50%; transform: translateX(-50%);
       width: 56px; height: 2px; background: var(--gold);
     }
-    .team-photo {
-      width: 130px; height: 130px; border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid rgba(201,168,76,.45);
-      display: block; margin: 0 auto 24px;
+    .team-initial {
+      width: 90px; height: 90px; border-radius: 50%;
       background: rgba(201,168,76,.09);
+      border: 2px solid rgba(201,168,76,.45);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 700; color: var(--gold);
     }
     .team-name {
       font-family: 'Playfair Display', serif;
-      font-size: 1.35rem; font-weight: 700;
+      font-size: 1.35rem; font-weight: 600;
       color: var(--cream); margin-bottom: 6px;
     }
     .team-role {
@@ -434,11 +408,7 @@
       text-transform: uppercase; color: var(--gold);
       margin-bottom: 18px;
     }
-    .team-bio { font-size: .875rem; color: var(--muted); line-height: 1.75; text-align: left; }
-    @media (min-width: 769px) {
-      .team-grid > .team-card:last-child:nth-child(3n+1) { grid-column: 2 / 3; }
-    }
-    @media (max-width: 1100px) { .team-grid { grid-template-columns: repeat(3,1fr); } }
+    .team-bio { font-size: .875rem; color: var(--muted); line-height: 1.75; }
     @media (max-width: 768px) { .team-grid { grid-template-columns: 1fr; } }
 
     /* === TESTIMONIALS === */
@@ -503,57 +473,57 @@
     }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 220px 220px 220px;
+      gap: 2px;
     }
-    .gal-item {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      display: flex; flex-direction: column;
-      transition: transform var(--ease), border-color var(--ease);
-    }
-    .gal-item:hover { transform: translateY(-4px); border-color: rgba(201,168,76,.4); }
-    .gal-media {
-      position: relative; overflow: hidden;
+    .gal-item { overflow: hidden; position: relative; background: var(--bg3); }
+    .gal-item:first-child { grid-row: span 2; }
+    .gal-item:last-child { grid-column: 2 / span 2; }
+    .gal-inner {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
       background: #111;
-      height: 0;
-      padding-bottom: 133.33%; /* 3:4 portrait — works everywhere */
-      aspect-ratio: 3 / 4;     /* modern browsers (ignored if no support) */
+      transition: transform .6s ease;
+      position: relative;
     }
-    .gal-media img {
+    .gal-inner img {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
       object-fit: cover; object-position: center;
       display: block;
-      transition: transform .6s ease;
     }
-    .gal-item:hover .gal-media img { transform: scale(1.05); }
+    .gal-item:hover .gal-inner { transform: scale(1.05); }
+    .gal-placeholder {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 10px;
+      color: rgba(201,168,76,.28);
+    }
+    .gal-placeholder svg {
+      width: 28px; height: 28px;
+      stroke: currentColor; fill: none;
+      stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .gal-placeholder span {
+      font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+    }
     .gal-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(0deg, rgba(13,13,13,.55) 0%, transparent 55%);
       opacity: 0; transition: opacity var(--ease);
-      pointer-events: none;
     }
     .gal-item:hover .gal-overlay { opacity: 1; }
-    .gal-caption {
-      padding: 18px 22px;
-      border-top: 1px solid var(--border);
-      font-family: 'Playfair Display', serif;
-      font-size: .95rem; font-weight: 600;
-      color: var(--cream);
-      letter-spacing: .02em;
-    }
-    .gal-caption-tag {
-      display: block;
-      font-family: 'DM Sans', sans-serif;
-      font-size: .62rem; font-weight: 500;
-      letter-spacing: .22em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 4px;
-    }
     @media (max-width: 768px) {
-      .gallery-grid { grid-template-columns: 1fr; gap: 18px; }
-      .gal-media { padding-bottom: 125%; aspect-ratio: 4 / 5; } /* 4:5 portrait */
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 200px);
+      }
+      .gal-item:first-child { grid-row: span 1; }
+      .gal-item:last-child { grid-column: span 1; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(6, 200px); }
+      .gal-item:last-child { grid-column: span 1; }
     }
 
     /* === CONTACT === */
@@ -581,13 +551,6 @@
       font-size: 1rem; color: var(--muted);
       line-height: 1.78; margin-bottom: 44px;
     }
-    .contact-booksy {
-      padding: 18px 36px;
-      font-size: .9rem; letter-spacing: .14em;
-      margin-bottom: 28px;
-      box-shadow: 0 14px 38px rgba(201,168,76,.22);
-    }
-    .contact-booksy:hover { box-shadow: 0 18px 44px rgba(201,168,76,.32); }
     .contact-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
     .contact-locs {
       display: grid; grid-template-columns: repeat(3,1fr);
@@ -605,7 +568,6 @@
       .contact-locs { grid-template-columns: repeat(2,1fr); }
       .contact-btns { flex-direction: column; align-items: center; }
     }
-    .contact-locs--single { grid-template-columns: 1fr; max-width: 360px; }
 
     /* === FOOTER === */
     #footer {
@@ -650,184 +612,6 @@
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
-
-    /* === MOBILE POLISH === */
-    @media (max-width: 768px) {
-      /* Hero — clear fixed nav and let content flow top-down */
-      #hero {
-        min-height: auto;
-        padding: 130px 0 88px;
-        align-items: flex-start;
-      }
-      .hero-eyebrow { margin-bottom: 22px; }
-      .hero-desc { margin-bottom: 32px; }
-      .hero-stats { margin-top: 48px; padding-top: 28px; }
-      .hero-stat-num { font-size: 2rem; }
-
-      /* Tighter section rhythm */
-      #services, #pricing, #locations, #team, #testimonials, #gallery { padding: 80px 0; }
-      #contact { padding: 100px 0; }
-      .container { padding: 0 22px; }
-
-      /* Full-width action buttons */
-      .hero-actions { width: 100%; gap: 12px; }
-      .contact-btns { width: 100%; }
-      .hero-actions .btn,
-      .contact-btns .btn,
-      .pricing-cta .btn,
-      .contact-booksy {
-        width: 100%; justify-content: center;
-      }
-      .contact-booksy { padding: 16px 22px; }
-
-      /* Service notice + gallery caption — tighter */
-      .svc-notice { padding: 22px 22px; }
-      .gal-caption { padding: 16px 18px; }
-
-      /* Pricing footer banner — readable letter-spacing */
-      .pricing-foot { letter-spacing: .18em; font-size: .82rem; padding: 18px 20px; }
-    }
-
-    @media (max-width: 480px) {
-      .container { padding: 0 18px; }
-      .hero-title { font-size: clamp(2.6rem, 11vw, 3.8rem); }
-      .hero-desc { font-size: .96rem; line-height: 1.7; }
-      .section-title { font-size: clamp(1.8rem, 7.5vw, 2.4rem); }
-      .hero-stat-num { font-size: 1.75rem; }
-      .pr-row { padding: 14px 16px; }
-      .pr-name { font-size: .88rem; }
-      .pr-price { font-size: 1rem; }
-      .pricing-foot { letter-spacing: .14em; font-size: .74rem; padding: 16px 16px; }
-      .pr-cat { font-size: .98rem; }
-      .footer-brand { font-size: 1.5rem; }
-      .testi-card { padding: 32px 26px; }
-      .loc-card { padding: 38px 28px; }
-      .nav-mobile a { font-size: 1.7rem; }
-    }
-
-    /* === LOCATION MAP === */
-    .map-embed {
-      display: block;
-      width: 100%;
-      height: 400px;
-      border: 1px solid var(--border);
-      margin-top: 48px;
-      filter: grayscale(.4) contrast(1.05);
-    }
-    @media (max-width: 768px) {
-      .map-embed { height: 300px; margin-top: 32px; }
-    }
-
-    /* === FLOATING SOCIAL STACK === */
-    .social-float {
-      position: fixed;
-      right: 28px;
-      bottom: 28px;
-      display: flex;
-      flex-direction: column-reverse;
-      gap: 12px;
-      z-index: 960;
-    }
-    .social-float a {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-decoration: none;
-      box-shadow: 0 6px 18px rgba(0,0,0,.28), 0 2px 6px rgba(0,0,0,.18);
-      transition: transform .2s var(--ease), box-shadow .2s var(--ease), filter .2s var(--ease);
-    }
-    .social-float a:hover,
-    .social-float a:focus-visible {
-      transform: translateY(-2px) scale(1.06);
-      box-shadow: 0 10px 24px rgba(0,0,0,.32), 0 3px 8px rgba(0,0,0,.22);
-      filter: brightness(1.05);
-    }
-    .social-float a:focus-visible {
-      outline: 2px solid #fff;
-      outline-offset: 3px;
-    }
-    .social-float svg {
-      width: 28px;
-      height: 28px;
-      fill: #fff;
-      display: block;
-    }
-    .social-float .sf-whatsapp { background: #25D366; }
-    .social-float .sf-instagram {
-      background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-    }
-    .social-float .sf-facebook { background: #1877F2; }
-    .social-float .sf-tiktok { background: #010101; }
-    @media (max-width: 768px) {
-      .social-float {
-        right: 16px;
-        bottom: calc(90px + env(safe-area-inset-bottom));
-        gap: 10px;
-      }
-      .social-float a { width: 46px; height: 46px; }
-      .social-float svg { width: 22px; height: 22px; }
-    }
-
-    /* === STICKY MOBILE CTA === */
-    .sticky-cta {
-      display: none;
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 950;
-      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
-      background: rgba(13,13,13,.96);
-      backdrop-filter: blur(18px);
-      border-top: 1px solid var(--border);
-    }
-    .sticky-cta .btn {
-      width: 100%;
-      justify-content: center;
-      padding: 14px 24px;
-      font-size: .82rem;
-    }
-    @media (max-width: 768px) {
-      .sticky-cta { display: block; }
-      body { padding-bottom: 78px; }
-    }
-
-    /* === GALLERY LIGHTBOX === */
-    .gal-item { cursor: zoom-in; }
-    .lightbox {
-      display: none;
-      position: fixed; inset: 0; z-index: 2000;
-      background: rgba(0,0,0,.94);
-      align-items: center; justify-content: center;
-    }
-    .lightbox.open { display: flex; }
-    .lightbox-img {
-      max-width: 92vw; max-height: 86vh;
-      object-fit: contain;
-      box-shadow: 0 20px 60px rgba(0,0,0,.8);
-    }
-    .lb-btn {
-      position: absolute;
-      background: rgba(13,13,13,.7);
-      border: 1px solid var(--border);
-      color: var(--cream);
-      width: 48px; height: 48px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      transition: all var(--ease);
-    }
-    .lb-btn:hover { background: var(--gold); color: #0d0d0d; border-color: var(--gold); }
-    .lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
-    .lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
-    .lb-close { right: 16px; top: 16px; }
-    .lb-btn svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    @media (max-width: 480px) {
-      .lb-prev { left: 8px; }
-      .lb-next { right: 8px; }
-      .lb-btn { width: 42px; height: 42px; }
-    }
   </style>
 </head>
 <body>
@@ -847,7 +631,7 @@
           <li><a href="#team">Team</a></li>
           <li><a href="#gallery">Gallery</a></li>
         </ul>
-        <a href="https://booksy.com/en-us/1178968_frgsalon-barbershopn04_barber-shop_29902_brooklyn#ba_s=seo" target="_blank" rel="noopener noreferrer" class="btn btn-gold nav-cta">Book Online</a>
+        <a href="#contact" class="btn btn-gold nav-cta">Book Now</a>
         <div class="nav-burger" id="navBurger">
           <span></span><span></span><span></span>
         </div>
@@ -864,26 +648,30 @@
       <div class="hero-content">
         <div class="hero-eyebrow">
           <span class="hero-eyebrow-line"></span>
-          <span class="hero-eyebrow-text">152 Avenue U · Brooklyn, NY</span>
+          <span class="hero-eyebrow-text">Brooklyn, New York City · 3 Locations</span>
         </div>
         <h1 class="hero-title">
           Where Craft<br>Meets <em>Culture</em>
         </h1>
         <p class="hero-desc">
-          Premium cuts, fades, color, and grooming for men, women, and kids —
-          rooted on Avenue U in Brooklyn. One shop. One standard of excellence.
+          Premium cuts, fades, and grooming rooted in Brooklyn's most
+          vibrant neighborhoods. Three locations. One standard of excellence.
         </p>
         <div class="hero-actions">
-          <a href="https://booksy.com/en-us/1178968_frgsalon-barbershopn04_barber-shop_29902_brooklyn#ba_s=seo" target="_blank" rel="noopener noreferrer" class="btn btn-gold">
-            Book Online
+          <a href="#contact" class="btn btn-gold">
+            Book Your Appointment
             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="#contact" class="btn btn-outline">Call or Visit</a>
+          <a href="#locations" class="btn btn-outline">Find a Location</a>
         </div>
         <div class="hero-stats">
           <div class="hero-stat">
-            <span class="hero-stat-num">9 AM</span>
-            <span class="hero-stat-label">Open Daily</span>
+            <span class="hero-stat-num">3</span>
+            <span class="hero-stat-label">Brooklyn Locations</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">3</span>
+            <span class="hero-stat-label">Co-Founders</span>
           </div>
           <div class="hero-stat">
             <span class="hero-stat-num">10+</span>
@@ -905,7 +693,8 @@
         </div>
         <p class="section-sub fi fi-d1">
           From precision skin fades to classic razor shaves — every visit is a ritual.
-          Men, women, and kids — full cuts, color, brows, and beauty work all under one roof.
+          Our barbers are trained in the full spectrum of men's grooming, with a
+          dedicated women's hair area at FRG 3.
         </p>
       </div>
       <div class="services-grid">
@@ -954,7 +743,7 @@
       </div>
       <div class="svc-notice fi">
         <span class="svc-notice-dot">✦</span>
-        <p><strong>Women's Salon Services</strong> — Cuts, color, highlights, brows, lashes &amp; makeup all available <em>on-site at 152 Avenue U</em>. See the full menu below.</p>
+        <p><strong>Women's Hair Services</strong> — Available exclusively at <em>FRG 3 (Bath Beach / Gravesend)</em>. Full cuts, coloring, and styling in a dedicated salon area.</p>
       </div>
     </div>
   </section>
@@ -963,52 +752,60 @@
   <section id="pricing">
     <div class="container">
       <div class="pricing-head fi">
-        <span class="section-label">Service Menu</span>
-        <h2 class="section-title">Price Menu</h2>
+        <span class="section-label">Transparent Pricing</span>
+        <h2 class="section-title">Service Menu</h2>
         <div class="divider"></div>
-        <p class="pricing-note">Walk-ins welcome. Cash &amp; cards accepted.</p>
+        <p class="pricing-note">Prices may vary slightly by location. Walk-ins welcome.</p>
       </div>
       <div class="pricing-table fi fi-d1">
-
-        <div class="pr-group">
-          <h3 class="pr-cat">Men's</h3>
-          <div class="pr-row"><span class="pr-name">Regular</span><div class="pr-dots"></div><span class="pr-price">$25</span></div>
-          <div class="pr-row"><span class="pr-name">Skin Fade</span><div class="pr-dots"></div><span class="pr-price">$28</span></div>
-          <div class="pr-row"><span class="pr-name">Regular Tape Up</span><div class="pr-dots"></div><span class="pr-price">$25</span></div>
-          <div class="pr-row"><span class="pr-name">Skin Tape Up</span><div class="pr-dots"></div><span class="pr-price">$28</span></div>
-          <div class="pr-row"><span class="pr-name">Flat Top</span><div class="pr-dots"></div><span class="pr-price">$30</span></div>
-          <div class="pr-row"><span class="pr-name">Shape Up</span><div class="pr-dots"></div><span class="pr-price">$20</span></div>
-          <div class="pr-row"><span class="pr-name">Designs</span><div class="pr-dots"></div><span class="pr-price">$45</span></div>
-          <div class="pr-row"><span class="pr-name">Haircut &amp; Beard</span><div class="pr-dots"></div><span class="pr-price">$40</span></div>
-          <div class="pr-row"><span class="pr-name">Black Mask</span><div class="pr-dots"></div><span class="pr-price">$20</span></div>
-          <div class="pr-row"><span class="pr-name">Men's Highlights</span><div class="pr-dots"></div><span class="pr-price">$70</span></div>
-
-          <h3 class="pr-cat">Eyebrow</h3>
-          <div class="pr-row"><span class="pr-name">Eyebrow w/ Blade</span><div class="pr-dots"></div><span class="pr-price">$5</span></div>
-          <div class="pr-row"><span class="pr-name">Eyebrow w/ Wax</span><div class="pr-dots"></div><span class="pr-price">$15</span></div>
+        <div class="pr-row">
+          <span class="pr-name">Full Service w/ Beard</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$40</span>
         </div>
-
-        <div class="pr-group">
-          <h3 class="pr-cat">Women's</h3>
-          <div class="pr-row"><span class="pr-name">Women's Haircut</span><div class="pr-dots"></div><span class="pr-price">$35</span></div>
-          <div class="pr-row"><span class="pr-name">Wash &amp; Blow Dry</span><div class="pr-dots"></div><span class="pr-price">$45</span></div>
-          <div class="pr-row"><span class="pr-name">Women's Highlights</span><div class="pr-dots"></div><span class="pr-price">$150</span></div>
-          <div class="pr-row"><span class="pr-name">Color Only</span><div class="pr-dots"></div><span class="pr-price">$110</span></div>
-          <div class="pr-row"><span class="pr-name">Black Only</span><div class="pr-dots"></div><span class="pr-price">$85</span></div>
-          <div class="pr-row"><span class="pr-name">Root Color</span><div class="pr-dots"></div><span class="pr-price">$70</span></div>
-          <div class="pr-row"><span class="pr-name">Braids</span><div class="pr-dots"></div><span class="pr-price">$70</span></div>
-          <div class="pr-row"><span class="pr-name">Hairstyles</span><div class="pr-dots"></div><span class="pr-price">$75</span></div>
-          <div class="pr-row"><span class="pr-name">Make Up</span><div class="pr-dots"></div><span class="pr-price">$75</span></div>
-
-          <h3 class="pr-cat">Kids</h3>
-          <div class="pr-row"><span class="pr-name">Kid's Haircut</span><div class="pr-dots"></div><span class="pr-price">$22</span></div>
-          <div class="pr-row"><span class="pr-name">Kid's Skin Fade</span><div class="pr-dots"></div><span class="pr-price">$25</span></div>
+        <div class="pr-row">
+          <span class="pr-name">Skin Fade w/ Beard</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$40</span>
         </div>
-
+        <div class="pr-row">
+          <span class="pr-name">Regular Haircut w/ Beard</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$35</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Skin Fade / Tape-Up</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$25</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Regular Haircut</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$22</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Kids Skin Fade</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$22</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Kids Regular Haircut</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$20</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Adult Line-Up</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$15</span>
+        </div>
+        <div class="pr-row">
+          <span class="pr-name">Kids Line-Up</span>
+          <div class="pr-dots"></div>
+          <span class="pr-price">$12</span>
+        </div>
       </div>
-      <p class="pricing-foot fi fi-d2">No return · No refund · No exchange</p>
       <div class="pricing-cta fi fi-d2">
-        <a href="https://booksy.com/en-us/1178968_frgsalon-barbershopn04_barber-shop_29902_brooklyn#ba_s=seo" target="_blank" rel="noopener noreferrer" class="btn btn-gold">Book Online</a>
+        <a href="#contact" class="btn btn-gold">Book Now</a>
       </div>
     </div>
   </section>
@@ -1018,22 +815,21 @@
     <div class="container">
       <div class="locations-head fi">
         <span class="section-label">Find Us</span>
-        <h2 class="section-title">Visit Us in<br>Gravesend, Brooklyn</h2>
+        <h2 class="section-title">Three Locations<br>Across Brooklyn</h2>
         <div class="divider"></div>
-        <p class="section-sub">Walk-ins welcome. Mon–Fri 9 AM – 10 PM, Sat–Sun 9 AM – 8 PM.</p>
+        <p class="section-sub">Deep roots in the neighborhoods we serve. Walk-ins welcome at all locations.</p>
       </div>
-      <div class="locations-grid locations-grid--single">
+      <div class="locations-grid">
 
         <!-- FRG No. 4 — 152 Avenue U -->
         <div class="loc-card fi">
           <div class="loc-num">4</div>
           <div class="loc-badge">FRG No. 4</div>
           <h3 class="loc-name">Gravesend</h3>
-          <p class="loc-address">152 Avenue U<br>Brooklyn, NY 11223<br><a href="tel:+17187016894" style="color:var(--gold)">(718) 701-6894</a><br><a href="tel:+13473403926" style="color:var(--gold)">(347) 340-3926</a></p>
+          <p class="loc-address">152 Avenue U<br>Brooklyn, NY 11223<br><a href="tel:+17187016894" style="color:var(--gold)">(718) 701-6894</a></p>
           <div class="loc-hours">
             <div class="loc-hours-label">Hours</div>
-            <div class="hr-row"><span class="hr-day">Mon – Fri</span><span class="hr-time">9:00 AM – 10:00 PM</span></div>
-            <div class="hr-row"><span class="hr-day">Sat – Sun</span><span class="hr-time">9:00 AM – 8:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Mon – Sun</span><span class="hr-time">9:00 AM – 10:00 PM</span></div>
           </div>
           <div class="loc-socials">
             <a href="https://www.facebook.com/profile.php?id=100095140941344" target="_blank" rel="noopener" class="soc-btn" aria-label="Facebook">
@@ -1045,13 +841,49 @@
           </div>
         </div>
 
+        <!-- FRG No. 3 — 1728 86th St -->
+        <div class="loc-card fi fi-d1">
+          <div class="loc-num">3</div>
+          <div class="loc-badge">FRG No. 3 · Women's Salon</div>
+          <h3 class="loc-name">Bath Beach</h3>
+          <p class="loc-address">1728 86th St<br>Brooklyn, NY 11214<br><a href="tel:+17183313733" style="color:var(--gold)">(718) 331-3733</a></p>
+          <div class="loc-hours">
+            <div class="loc-hours-label">Hours</div>
+            <div class="hr-row"><span class="hr-day">Mon – Sun</span><span class="hr-time">8:00 AM – 9:30 PM</span></div>
+          </div>
+          <div class="loc-socials">
+            <a href="https://www.facebook.com/FRGSalonBarberShop3" target="_blank" rel="noopener" class="soc-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/barbershop3frg" target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- F.R.G. Barbershop — 8606 19th Ave -->
+        <div class="loc-card fi fi-d2">
+          <div class="loc-num">1</div>
+          <div class="loc-badge">F.R.G. Barbershop</div>
+          <h3 class="loc-name">Bath Beach</h3>
+          <p class="loc-address">8606 19th Ave<br>Brooklyn, NY 11214<br><a href="tel:+17189752014" style="color:var(--gold)">(718) 975-2014</a></p>
+          <div class="loc-hours">
+            <div class="loc-hours-label">Hours</div>
+            <div class="hr-row"><span class="hr-day">Mon – Fri</span><span class="hr-time">9:00 AM – 9:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Saturday</span><span class="hr-time">9:00 AM – 8:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Sunday</span><span class="hr-time">9:00 AM – 7:00 PM</span></div>
+          </div>
+          <div class="loc-socials">
+            <a href="https://www.facebook.com/FRG-Barbershop-417898354978197" target="_blank" rel="noopener" class="soc-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/frg_barber_shop" target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+            </a>
+          </div>
+        </div>
+
       </div>
-      <iframe
-        class="map-embed fi fi-d2"
-        src="https://www.google.com/maps?q=152+Avenue+U,+Brooklyn,+NY+11223&output=embed"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Map showing F.R.G. Salon &amp; Barbershop at 152 Avenue U, Brooklyn, NY 11223"></iframe>
     </div>
   </section>
 
@@ -1060,52 +892,28 @@
     <div class="container">
       <div class="team-head fi">
         <span class="section-label">The People Behind It</span>
-        <h2 class="section-title">Meet the Team</h2>
+        <h2 class="section-title">Meet the Founders</h2>
         <div class="divider"></div>
-        <p class="section-sub" style="margin: 0 auto;">The skilled hands and friendly faces behind every cut at FRG.</p>
+        <p class="section-sub" style="margin: 0 auto;">Three brothers. One vision. Built from the ground up in Brooklyn.</p>
       </div>
       <div class="team-grid">
         <div class="team-card fi">
-          <img class="team-photo" src="IMG_3937.jpeg" alt="Frank, Owner of FRG Barbershop">
-          <h3 class="team-name">Frank</h3>
-          <div class="team-role">Owner</div>
-          <p class="team-bio">Frank is a seasoned professional with over 30 years of experience in barbering and the proud owner of FRG Barbershop No. 4. Known for his speed and precision, he delivers high-quality cuts efficiently without ever compromising on detail. Highly skilled and versatile, Frank works confidently with all hair types and styles. He is especially great with kids' haircuts, creating a comfortable and friendly experience that puts both parents and children at ease. Sociable and welcoming, Frank has built a strong reputation not just for his talent, but for the positive and relaxed atmosphere he brings to his barbershop every day.</p>
+          <div class="team-initial">F</div>
+          <h3 class="team-name">Francisco López</h3>
+          <div class="team-role">Co-Founder</div>
+          <p class="team-bio">The visionary behind FRG's signature aesthetic. Francisco set the standard for precision and artistry that defines every cut across all four locations.</p>
         </div>
         <div class="team-card fi fi-d1">
-          <img class="team-photo" src="IMG_3923.jpeg" alt="John, Barber at FRG Barbershop">
-          <h3 class="team-name">John</h3>
-          <div class="team-role">Barber</div>
-          <p class="team-bio">John is an experienced barber with over 5 years in the industry, known for his skill, precision, and dedication to his craft. He handles all types of haircuts and is especially talented at creating custom designs, giving each client a unique and personalized look. John pays close attention to detail, particularly with beard work, ensuring every shape and line is clean, sharp, and well-balanced. Friendly and easy to work with, he creates a comfortable atmosphere where clients feel heard and taken care of every time they sit in his chair.</p>
+          <div class="team-initial">R</div>
+          <h3 class="team-name">Roberto López</h3>
+          <div class="team-role">Co-Founder</div>
+          <p class="team-bio">Roberto brings the business spirit and community heart to FRG. A Brooklyn native dedicated to building something real, lasting, and rooted in the culture.</p>
         </div>
         <div class="team-card fi fi-d2">
-          <img class="team-photo" src="IMG_3929.jpeg" alt="Ricardo, Barber at FRG Barbershop">
-          <h3 class="team-name">Ricardo</h3>
-          <div class="team-role">Barber</div>
-          <p class="team-bio">Ricardo is a talented barber with 5 years of experience, known for his clean, precise fades and strong attention to detail. He works confidently with both clippers and scissors, making him versatile enough to handle everything from sharp modern cuts to longer textured styles. Ricardo also specializes in custom hair designs, detailed beard grooming, and shaping. To top it off, he offers relaxing facial massages, giving every client not just a fresh cut, but a complete and refreshing grooming experience.</p>
-        </div>
-        <div class="team-card fi fi-d3">
-          <img class="team-photo" src="IMG_3932.jpeg" alt="Dario, Barber at FRG Barbershop">
-          <h3 class="team-name">Dario</h3>
-          <div class="team-role">Barber</div>
-          <p class="team-bio">Dario is a skilled and dedicated barber with 5 years of hands-on experience in grooming and style. Known for his attention to detail and friendly approach, he offers a full range of services tailored to every client's needs. From clean precise haircuts to stylish kids' cuts, Dario brings patience and professionalism to every appointment. He also specializes in perms and men's hair dye, helping clients achieve bold new looks or subtle transformations. For those looking to elevate their experience, Dario provides VIP haircuts with extra care and precision, along with relaxing facial massages that leave clients feeling refreshed and confident.</p>
-        </div>
-        <div class="team-card fi fi-d4">
-          <img class="team-photo" src="IMG_4472.png" alt="Esther, Stylist at FRG Barbershop">
-          <h3 class="team-name">Esther</h3>
-          <div class="team-role">Stylist</div>
-          <p class="team-bio">Esther is a skilled hairstylist with 27 years of experience, offering professional hair services for the whole family. She specializes in haircuts for women, men, and children, along with men's perms and a variety of styling options. Her expertise also includes colors, braids, and highlights, as well as keratin treatments that leave hair smooth, healthy, and radiant. Esther is dedicated to providing personalized, high-quality service to help every client look and feel their best.</p>
-        </div>
-        <div class="team-card fi fi-d5">
-          <img class="team-photo" src="IMG_1362.jpeg" alt="Diana Pulido, PMU Artist & Licensed Lash Technician at FRG Barbershop">
-          <h3 class="team-name">Diana Pulido</h3>
-          <div class="team-role">PMU Artist &amp; Licensed Lash Technician</div>
-          <p class="team-bio">Diana is a highly skilled PMU Artist and Licensed Lash Technician with 16 years of experience in the beauty industry. She holds a Tattoo Artist Permit/License issued by the City of New York. Diana offers a wide range of specialized services including micropigmentation of eyebrows, eyes, and lips, Microblading, Ombré Brows, Eyeliner, and Color Lips. She also provides Lash Extensions, Lash Lifting, and Henna Brows. For waxing, Diana specializes in sensitive skin and offers Brazilian waxing (partial or full), as well as facial and body waxing. Additional services include Facial Cleansing, Anti-Stress and Relaxation Body Massage, Professional Makeup for all occasions, and Classic Men's Haircuts.</p>
-        </div>
-        <div class="team-card fi fi-d5">
-          <img class="team-photo" src="35abcf21-d3ad-49d5-adbe-467f3df1bd3e.jpeg" alt="Sandy, Hairstylist at FRG Barbershop">
-          <h3 class="team-name">Sandy</h3>
-          <div class="team-role">Hairstylist</div>
-          <p class="team-bio">Sandy is a highly skilled hairstylist with over 10 years of professional experience in the industry. She specializes in men's haircuts, delivering clean, precise styles tailored to each client's look and preferences. In addition to her expertise in men's grooming, Sandy is trained in a wide range of services including perms, hair coloring, and women's haircuts. Her attention to detail and ability to stay up to date with current trends make her a versatile stylist who can handle everything from classic cuts to modern transformations. Whether you're looking for a fresh fade, a bold new color, or a complete style change, Sandy brings both creativity and consistency to every appointment.</p>
+          <div class="team-initial">J</div>
+          <h3 class="team-name">Jorge López</h3>
+          <div class="team-role">Co-Founder</div>
+          <p class="team-bio">Jorge's hands are behind some of Brooklyn's cleanest fades. His technical mastery and passion for the craft elevate the entire FRG team's standard of work.</p>
         </div>
       </div>
     </div>
@@ -1129,7 +937,7 @@
             <div class="testi-av">MR</div>
             <div>
               <div class="testi-name">Marcus R.</div>
-              <div class="testi-loc">Avenue U Regular</div>
+              <div class="testi-loc">Sunset Park Regular</div>
             </div>
           </div>
         </div>
@@ -1142,7 +950,7 @@
             <div class="testi-av">DL</div>
             <div>
               <div class="testi-name">Diana L.</div>
-              <div class="testi-loc">Gravesend Customer</div>
+              <div class="testi-loc">Bath Beach Customer</div>
             </div>
           </div>
         </div>
@@ -1173,132 +981,48 @@
           <h2 class="section-title">The Portfolio</h2>
           <div class="divider"></div>
         </div>
-        <a href="https://www.instagram.com/frgsalonandbarbershop4" target="_blank" rel="noopener" class="btn btn-outline">
+        <a href="https://www.instagram.com/frg_barber_shop" target="_blank" rel="noopener" class="btn btn-outline">
           Follow on Instagram
           <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         </a>
       </div>
-      <div class="gallery-grid">
-        <figure class="gal-item">
-          <div class="gal-media">
-            <img src="IMG_4858.webp" alt="F.R.G. Salon &amp; Barber Shop exterior at 152 Avenue U, Brooklyn" loading="lazy">
+      <div class="gallery-grid fi fi-d1">
+        <div class="gal-item">
+          <div class="gal-inner">
+            <img src="IMG_4858.webp" alt="F.R.G. Salon &amp; Barber Shop exterior at 152 Avenue U, Brooklyn">
             <div class="gal-overlay"></div>
           </div>
-          <figcaption class="gal-caption">
-            <span class="gal-caption-tag">On Avenue U</span>
-            The storefront
-          </figcaption>
-        </figure>
-        <figure class="gal-item">
-          <div class="gal-media">
-            <img src="IMG_4864.webp" alt="F.R.G. front desk and entrance" loading="lazy">
+        </div>
+        <div class="gal-item">
+          <div class="gal-inner">
+            <img src="IMG_4859.webp" alt="FRG Salon &amp; Barbershop interior">
             <div class="gal-overlay"></div>
           </div>
-          <figcaption class="gal-caption">
-            <span class="gal-caption-tag">The Entrance</span>
-            Front desk
-          </figcaption>
-        </figure>
-        <figure class="gal-item">
-          <div class="gal-media">
-            <img src="IMG_4859.webp" alt="F.R.G. Salon &amp; Barbershop interior" loading="lazy">
+        </div>
+        <div class="gal-item">
+          <div class="gal-inner">
+            <img src="IMG_4866.webp" alt="FRG waiting area">
             <div class="gal-overlay"></div>
           </div>
-          <figcaption class="gal-caption">
-            <span class="gal-caption-tag">Inside</span>
-            The shop floor
-          </figcaption>
-        </figure>
-        <figure class="gal-item">
-          <div class="gal-media">
-            <img src="IMG_4866.webp" alt="F.R.G. waiting area" loading="lazy">
+        </div>
+        <div class="gal-item">
+          <div class="gal-inner">
+            <img src="IMG_4864.webp" alt="FRG front desk and entrance">
             <div class="gal-overlay"></div>
           </div>
-          <figcaption class="gal-caption">
-            <span class="gal-caption-tag">Lounge</span>
-            Waiting area
-          </figcaption>
-        </figure>
-        <figure class="gal-item">
-          <div class="gal-media">
-            <img src="IMG_4863.webp" alt="F.R.G. barber station" loading="lazy">
+        </div>
+        <div class="gal-item">
+          <div class="gal-inner">
+            <img src="IMG_4863.webp" alt="FRG barber station">
             <div class="gal-overlay"></div>
           </div>
-          <figcaption class="gal-caption">
-            <span class="gal-caption-tag">The Chair</span>
-            Barber station
-          </figcaption>
-        </figure>
-        <figure class="gal-item">
-          <div class="gal-media">
-            <img src="IMG_4904.jpeg" alt="Facial and treatment room at F.R.G. No. 4" loading="lazy">
+        </div>
+        <div class="gal-item">
+          <div class="gal-inner">
+            <img src="IMG_4867.webp" alt="FRG price list">
             <div class="gal-overlay"></div>
           </div>
-          <figcaption class="gal-caption">
-            <span class="gal-caption-tag">The Suite</span>
-            Facial &amp; treatment room
-          </figcaption>
-        </figure>
-        <figure class="gal-item">
-          <div class="gal-media">
-            <img src="IMG_4905.jpeg" alt="Inside the women's salon area at F.R.G. No. 4" loading="lazy">
-            <div class="gal-overlay"></div>
-          </div>
-          <figcaption class="gal-caption">
-            <span class="gal-caption-tag">Salon</span>
-            Women's salon area
-          </figcaption>
-        </figure>
-        <figure class="gal-item">
-          <div class="gal-media">
-            <img src="IMG_4906.jpeg" alt="Brow, lash, and makeup studio at F.R.G. No. 4" loading="lazy">
-            <div class="gal-overlay"></div>
-          </div>
-          <figcaption class="gal-caption">
-            <span class="gal-caption-tag">Beauty Bar</span>
-            Brow, lash &amp; makeup studio
-          </figcaption>
-        </figure>
-        <figure class="gal-item">
-          <div class="gal-media">
-            <img src="IMG_3892.png" alt="Balayage blonde ombre styled at F.R.G. No. 4" loading="lazy">
-            <div class="gal-overlay"></div>
-          </div>
-          <figcaption class="gal-caption">
-            <span class="gal-caption-tag">Color Work</span>
-            Balayage &amp; blonde ombre
-          </figcaption>
-        </figure>
-        <figure class="gal-item">
-          <div class="gal-media">
-            <img src="IMG_5454.jpeg" alt="Highlighted brunette balayage at F.R.G. No. 4" loading="lazy">
-            <div class="gal-overlay"></div>
-          </div>
-          <figcaption class="gal-caption">
-            <span class="gal-caption-tag">Color Work</span>
-            Highlighted brunette
-          </figcaption>
-        </figure>
-        <figure class="gal-item">
-          <div class="gal-media">
-            <img src="IMG_3893.png" alt="Burgundy plum gloss finish at F.R.G. No. 4" loading="lazy">
-            <div class="gal-overlay"></div>
-          </div>
-          <figcaption class="gal-caption">
-            <span class="gal-caption-tag">Color Work</span>
-            Burgundy plum gloss
-          </figcaption>
-        </figure>
-        <figure class="gal-item">
-          <div class="gal-media">
-            <img src="IMG_4867.webp" alt="F.R.G. service price list" loading="lazy">
-            <div class="gal-overlay"></div>
-          </div>
-          <figcaption class="gal-caption">
-            <span class="gal-caption-tag">The Menu</span>
-            Service price list
-          </figcaption>
-        </figure>
+        </div>
       </div>
     </div>
   </section>
@@ -1309,26 +1033,19 @@
       <div class="contact-inner fi">
         <span class="section-label">Ready?</span>
         <h2 class="contact-title">Book Your<br><em>Next Cut</em></h2>
-        <p class="contact-desc">Book online with Booksy — pick your barber, pick your time, you're in. Walk-ins welcome at 152 Avenue U. Or give us a call.</p>
-        <a href="https://booksy.com/en-us/1178968_frgsalon-barbershopn04_barber-shop_29902_brooklyn#ba_s=seo" target="_blank" rel="noopener noreferrer" class="btn btn-gold contact-booksy">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Book Online
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
+        <p class="contact-desc">Walk-ins welcome at all three Brooklyn locations. For appointments, call your nearest shop or reach us on Instagram — we'll get you in.</p>
         <div class="contact-btns">
           <a href="tel:+17187016894" class="btn btn-gold">
             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.37h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.92 17z"/></svg>
-            (718) 701-6894
+            Call to Book
           </a>
-          <a href="tel:+13473403926" class="btn btn-gold">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.37h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.92 17z"/></svg>
-            (347) 340-3926
-          </a>
-          <a href="https://www.instagram.com/frgsalonandbarbershop4" target="_blank" rel="noopener" class="btn btn-outline">DM on Instagram</a>
+          <a href="https://www.instagram.com/frg_barber_shop" target="_blank" rel="noopener" class="btn btn-outline">DM on Instagram</a>
           <a href="#locations" class="btn btn-outline">Find a Location</a>
         </div>
-        <div class="contact-locs contact-locs--single">
-          <div class="contact-loc"><div class="contact-loc-tag">FRG No. 4</div><div class="contact-loc-name">152 Avenue U · Gravesend, Brooklyn</div></div>
+        <div class="contact-locs">
+          <div class="contact-loc"><div class="contact-loc-tag">FRG No. 4</div><div class="contact-loc-name">Gravesend</div></div>
+          <div class="contact-loc"><div class="contact-loc-tag">FRG No. 3</div><div class="contact-loc-name">Bath Beach</div></div>
+          <div class="contact-loc"><div class="contact-loc-tag">F.R.G.</div><div class="contact-loc-name">Bath Beach</div></div>
         </div>
       </div>
     </div>
@@ -1340,11 +1057,15 @@
       <div class="footer-grid">
         <div>
           <div class="footer-brand">F.R.G.</div>
-          <div class="footer-brand-sub">Salon &amp; Barbershop · 152 Avenue U, Brooklyn</div>
-          <p class="footer-tagline">Premium grooming rooted in Brooklyn's culture. F.R.G. No. 4 — 152 Avenue U, Gravesend, Brooklyn.</p>
+          <div class="footer-brand-sub">Salon &amp; Barbershop · Brooklyn, NYC</div>
+          <p class="footer-tagline">Premium grooming rooted in Brooklyn's culture. Three locations serving Bath Beach and Gravesend, Brooklyn.</p>
           <div class="footer-socials">
             <a href="https://www.facebook.com/profile.php?id=100095140941344" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG No. 4 Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
             <a href="https://www.instagram.com/frgsalonandbarbershop4" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG No. 4 Instagram"><svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></a>
+            <a href="https://www.facebook.com/FRGSalonBarberShop3" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG No. 3 Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://www.instagram.com/barbershop3frg" target="_blank" rel="noopener" class="soc-btn" aria-label="FRG No. 3 Instagram"><svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></a>
+            <a href="https://www.facebook.com/FRG-Barbershop-417898354978197" target="_blank" rel="noopener" class="soc-btn" aria-label="F.R.G. Barbershop Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://www.instagram.com/frg_barber_shop" target="_blank" rel="noopener" class="soc-btn" aria-label="F.R.G. Barbershop Instagram"><svg viewBox="0 0 24 24"><path d="M16 2H8a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V8a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8zm-8-9a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm5.5-9a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></a>
           </div>
         </div>
         <div>
@@ -1360,85 +1081,31 @@
           </ul>
         </div>
         <div>
-          <div class="footer-col-title">Visit</div>
+          <div class="footer-col-title">Locations</div>
           <ul class="footer-links">
-            <li><a href="#locations">152 Avenue U</a></li>
-            <li><a href="#locations">Brooklyn, NY 11223</a></li>
-            <li><a href="tel:+17187016894">(718) 701-6894</a></li>
-            <li><a href="tel:+13473403926">(347) 340-3926</a></li>
-            <li><a href="#locations">Mon–Fri 9 AM – 10 PM</a></li>
-            <li><a href="#locations">Sat–Sun 9 AM – 8 PM</a></li>
+            <li><a href="#locations">FRG No. 4 – Gravesend</a></li>
+            <li><a href="#locations">FRG No. 3 – Bath Beach</a></li>
+            <li><a href="#locations">F.R.G. Barbershop – Bath Beach</a></li>
           </ul>
         </div>
         <div>
           <div class="footer-col-title">Follow Us</div>
           <ul class="footer-links">
             <li><a href="https://www.instagram.com/frgsalonandbarbershop4" target="_blank" rel="noopener">@frgsalonandbarbershop4</a></li>
-            <li><a href="https://www.facebook.com/profile.php?id=100095140941344" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://www.instagram.com/barbershop3frg" target="_blank" rel="noopener">@barbershop3frg</a></li>
+            <li><a href="https://www.instagram.com/frg_barber_shop" target="_blank" rel="noopener">@frg_barber_shop</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2025 F.R.G. Salon &amp; Barbershop. All rights reserved. 152 Avenue U, Brooklyn.</p>
+        <p class="footer-copy">&copy; 2025 F.R.G. Salon &amp; Barbershop. All rights reserved. Brooklyn, NYC.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
       </div>
     </div>
   </footer>
-
-  <!-- FLOATING SOCIAL STACK -->
-  <div class="social-float" aria-label="Contact and follow FRG on social media">
-    <a class="sf-whatsapp"
-       href="https://wa.me/13473403926?text=Hi%21%20I%20found%20you%20on%20your%20website%20and%20I%20have%20a%20question."
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Chat with FRG on WhatsApp">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M19.11 4.91A10.45 10.45 0 0 0 11.66.5C5.84.5 1.1 5.24 1.1 11.06c0 1.86.49 3.68 1.42 5.28L1 23.5l7.34-1.49a10.5 10.5 0 0 0 3.32.54h.01c5.82 0 10.56-4.74 10.56-10.56 0-2.82-1.1-5.47-3.12-7.08zm-7.45 16.24h-.01a8.7 8.7 0 0 1-4.43-1.21l-.32-.19-4.36.88.93-4.25-.21-.34a8.66 8.66 0 0 1-1.34-4.62c0-4.79 3.9-8.69 8.74-8.69 2.33 0 4.52.91 6.17 2.56a8.65 8.65 0 0 1 2.56 6.16c-.01 4.79-3.91 8.7-8.73 8.7zm4.78-6.51c-.26-.13-1.55-.76-1.79-.85-.24-.09-.41-.13-.59.13-.17.26-.67.85-.83 1.02-.15.17-.3.2-.56.07-.26-.13-1.11-.41-2.11-1.31-.78-.7-1.31-1.55-1.46-1.81-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.07-.13-.59-1.42-.81-1.95-.21-.51-.43-.44-.59-.45-.15-.01-.32-.01-.5-.01-.17 0-.45.06-.69.32-.24.26-.91.89-.91 2.17 0 1.28.93 2.52 1.06 2.69.13.17 1.84 2.81 4.45 3.94.62.27 1.11.43 1.49.55.62.2 1.19.17 1.64.1.5-.07 1.55-.63 1.77-1.24.22-.61.22-1.13.15-1.24-.06-.11-.24-.17-.5-.3z"/>
-      </svg>
-    </a>
-    <a class="sf-instagram"
-       href="https://www.instagram.com/frgsalonandbarbershop4"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Follow FRG on Instagram">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.71 3.71 0 0 1-1.38-.9 3.71 3.71 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.87 5.87 0 0 0-2.13 1.38A5.87 5.87 0 0 0 .63 4.14c-.3.76-.5 1.64-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.8.73 1.48 1.38 2.13.65.65 1.33 1.07 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.87 5.87 0 0 0 2.13-1.38 5.87 5.87 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.87 5.87 0 0 0-1.38-2.13A5.87 5.87 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/>
-      </svg>
-    </a>
-    <a class="sf-facebook"
-       href="https://www.facebook.com/profile.php?id=100095140941344"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Follow FRG on Facebook">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/>
-      </svg>
-    </a>
-    <a class="sf-tiktok"
-       href="https://www.tiktok.com/@www.tiktok.comfrank.l.s"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Follow FRG on TikTok">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.95a8.16 8.16 0 0 0 4.77 1.52V7.02a4.85 4.85 0 0 1-1.84-.33z"/>
-      </svg>
-    </a>
-  </div>
-
-  <!-- STICKY MOBILE CTA -->
-  <div class="sticky-cta">
-    <a href="https://booksy.com/en-us/1178968_frgsalon-barbershopn04_barber-shop_29902_brooklyn#ba_s=seo"
-       target="_blank" rel="noopener noreferrer" class="btn btn-gold">Book Online</a>
-  </div>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-    <button class="lb-btn lb-close" id="lbClose" aria-label="Close">
-      <svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
-    </button>
-    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous image">
-      <svg viewBox="0 0 24 24"><polyline points="15 6 9 12 15 18"/></svg>
-    </button>
-    <img class="lightbox-img" id="lbImg" alt="">
-    <button class="lb-btn lb-next" id="lbNext" aria-label="Next image">
-      <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-    </button>
-  </div>
 
   <!-- MOBILE NAV OVERLAY -->
   <div class="nav-mobile" id="navMobile">
@@ -1447,7 +1114,7 @@
     <a href="#locations">Locations</a>
     <a href="#team">Team</a>
     <a href="#gallery">Gallery</a>
-    <a href="https://booksy.com/en-us/1178968_frgsalon-barbershopn04_barber-shop_29902_brooklyn#ba_s=seo" target="_blank" rel="noopener noreferrer" class="btn btn-gold">Book Online</a>
+    <a href="#contact" class="btn btn-gold">Book Now</a>
   </div>
 
   <script>
@@ -1469,20 +1136,10 @@
     }));
 
     /* === SCROLL FADE-IN === */
-    const fiEls = document.querySelectorAll('.fi');
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-      }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
-      fiEls.forEach(el => observer.observe(el));
-    } else {
-      fiEls.forEach(el => el.classList.add('visible'));
-    }
-    /* Safety net: force everything visible after 1.5s in case the
-       observer didn't fire (zero-height parent, JS error, etc.) */
-    setTimeout(() => {
-      document.querySelectorAll('.fi:not(.visible)').forEach(el => el.classList.add('visible'));
-    }, 1500);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+    document.querySelectorAll('.fi').forEach(el => observer.observe(el));
 
     /* === SMOOTH ANCHOR SCROLL === */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -1490,43 +1147,6 @@
         const target = document.querySelector(this.getAttribute('href'));
         if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
-    });
-
-    /* === GALLERY LIGHTBOX === */
-    const galImgs = Array.from(document.querySelectorAll('.gal-item .gal-media img'));
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lbImg');
-    const lbClose = document.getElementById('lbClose');
-    const lbPrev = document.getElementById('lbPrev');
-    const lbNext = document.getElementById('lbNext');
-    let lbIndex = 0;
-
-    const showLb = (i) => {
-      if (!galImgs.length) return;
-      lbIndex = (i + galImgs.length) % galImgs.length;
-      lbImg.src = galImgs[lbIndex].getAttribute('src');
-      lbImg.alt = galImgs[lbIndex].getAttribute('alt') || '';
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    };
-    const hideLb = () => {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    };
-
-    galImgs.forEach((img, i) => {
-      const item = img.closest('.gal-item');
-      if (item) item.addEventListener('click', () => showLb(i));
-    });
-    lbClose.addEventListener('click', hideLb);
-    lbPrev.addEventListener('click', (e) => { e.stopPropagation(); showLb(lbIndex - 1); });
-    lbNext.addEventListener('click', (e) => { e.stopPropagation(); showLb(lbIndex + 1); });
-    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) hideLb(); });
-    document.addEventListener('keydown', (e) => {
-      if (!lightbox.classList.contains('open')) return;
-      if (e.key === 'Escape') hideLb();
-      else if (e.key === 'ArrowLeft') showLb(lbIndex - 1);
-      else if (e.key === 'ArrowRight') showLb(lbIndex + 1);
     });
   </script>
 </body>
