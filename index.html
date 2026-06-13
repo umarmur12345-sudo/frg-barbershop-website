@@ -211,6 +211,8 @@
     .fi-d3 { transition-delay: .3s; }
     .fi-d4 { transition-delay: .4s; }
     .fi-d5 { transition-delay: .5s; }
+    .fi-d6 { transition-delay: .6s; }
+    .fi-d7 { transition-delay: .7s; }
 
     /* === SERVICES === */
     #services {
@@ -404,9 +406,12 @@
     .team-head { text-align: center; margin-bottom: 64px; }
     .team-head .divider { margin: 18px auto 0; }
     .team-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 2px;
     }
     .team-card {
+      flex: 0 0 calc((100% - 4px) / 3);
+      max-width: calc((100% - 4px) / 3);
+      min-width: 0; box-sizing: border-box;
       background: var(--bg3); padding: 52px 28px 44px;
       text-align: center; position: relative; overflow: hidden;
       transition: transform var(--ease);
@@ -417,12 +422,19 @@
       top: 0; left: 50%; transform: translateX(-50%);
       width: 56px; height: 2px; background: var(--gold);
     }
-    .team-photo {
+    .team-photo,
+    .team-photo-placeholder {
       width: 130px; height: 130px; border-radius: 50%;
-      object-fit: cover;
       border: 2px solid rgba(201,168,76,.45);
       display: block; margin: 0 auto 24px;
       background: rgba(201,168,76,.09);
+    }
+    .team-photo { object-fit: cover; }
+    .team-photo-placeholder {
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 3.25rem; font-weight: 700; color: var(--gold);
+      line-height: 1; user-select: none;
     }
     .team-name {
       font-family: 'Playfair Display', serif;
@@ -435,8 +447,12 @@
       margin-bottom: 18px;
     }
     .team-bio { font-size: .875rem; color: var(--muted); line-height: 1.75; text-align: left; }
-    @media (max-width: 1100px) { .team-grid { grid-template-columns: repeat(3,1fr); } }
-    @media (max-width: 768px) { .team-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 1100px) {
+      .team-card { flex-basis: calc((100% - 2px) / 2); max-width: calc((100% - 2px) / 2); }
+    }
+    @media (max-width: 768px) {
+      .team-card { flex-basis: 100%; max-width: 100%; }
+    }
 
     /* === TESTIMONIALS === */
     #testimonials {
@@ -1097,6 +1113,18 @@
           <h3 class="team-name">Diana Pulido</h3>
           <div class="team-role">PMU Artist &amp; Licensed Lash Technician</div>
           <p class="team-bio">Diana is a highly skilled PMU Artist and Licensed Lash Technician with 16 years of experience in the beauty industry. She holds a Tattoo Artist Permit/License issued by the City of New York. Diana offers a wide range of specialized services including micropigmentation of eyebrows, eyes, and lips, Microblading, Ombré Brows, Eyeliner, and Color Lips. She also provides Lash Extensions, Lash Lifting, and Henna Brows. For waxing, Diana specializes in sensitive skin and offers Brazilian waxing (partial or full), as well as facial and body waxing. Additional services include Facial Cleansing, Anti-Stress and Relaxation Body Massage, Professional Makeup for all occasions, and Classic Men's Haircuts.</p>
+        </div>
+        <div class="team-card fi fi-d6">
+          <img class="team-photo" src="35abcf21-d3ad-49d5-adbe-467f3df1bd3e.jpeg" alt="Sandy, Hairstylist at FRG Barbershop">
+          <h3 class="team-name">Sandy</h3>
+          <div class="team-role">Hairstylist</div>
+          <p class="team-bio">Sandy is a hairstylist with 10+ years of experience, specializing in balayage, highlights, and custom color for women, including blonding and color transformations. She also offers keratin treatments and modern men's haircuts.</p>
+        </div>
+        <div class="team-card fi fi-d7">
+          <div class="team-photo-placeholder" aria-label="Adrian, Barber at FRG Barbershop">A</div>
+          <h3 class="team-name">Adrian</h3>
+          <div class="team-role">Barber</div>
+          <p class="team-bio">Full bio coming soon.</p>
         </div>
       </div>
     </div>
