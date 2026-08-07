@@ -214,6 +214,63 @@
     .fi-d6 { transition-delay: .6s; }
     .fi-d7 { transition-delay: .7s; }
 
+    /* === PROBLEM & SOLUTION === */
+    #why-frg {
+      padding: 120px 0; background: var(--bg2);
+      border-top: 1px solid rgba(201,168,76,.12);
+    }
+    .why-head { text-align: center; margin-bottom: 72px; }
+    .why-head .divider { margin: 18px auto 0; }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    }
+    .why-card {
+      background: var(--bg3); padding: 48px 36px;
+      position: relative; overflow: hidden;
+      transition: transform var(--ease);
+    }
+    .why-card:hover { transform: translateY(-4px); }
+    .why-problem {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding-bottom: 28px; margin-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .why-problem-icon {
+      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(220, 80, 80, .1);
+      border: 1px solid rgba(220, 80, 80, .25);
+      display: flex; align-items: center; justify-content: center;
+      color: #c06060; font-size: .85rem; margin-top: 2px;
+    }
+    .why-problem-label {
+      font-size: .63rem; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: #a06060; margin-bottom: 7px;
+    }
+    .why-problem-text {
+      font-size: .92rem; color: var(--muted); line-height: 1.7;
+    }
+    .why-solution {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .why-solution-icon {
+      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(201,168,76,.1);
+      border: 1px solid rgba(201,168,76,.3);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: .85rem; margin-top: 2px;
+    }
+    .why-solution-label {
+      font-size: .63rem; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 7px;
+    }
+    .why-solution-text {
+      font-size: .92rem; color: var(--cream); line-height: 1.7;
+    }
+    @media (max-width: 900px) { .why-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 580px) { .why-grid { grid-template-columns: 1fr; } }
+
     /* === SERVICES === */
     #services {
       padding: 120px 0; background: var(--bg);
@@ -903,6 +960,84 @@
             <span class="hero-stat-label">Years in Brooklyn</span>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM & SOLUTION -->
+  <section id="why-frg">
+    <div class="container">
+      <div class="why-head fi">
+        <span class="section-label">Why FRG</span>
+        <h2 class="section-title">The Problem.<br>Our Solution.</h2>
+        <div class="divider"></div>
+        <p class="section-sub" style="margin: 0 auto;">Most barbershops fall short somewhere. Here's exactly how FRG closes the gap.</p>
+      </div>
+      <div class="why-grid">
+
+        <div class="why-card fi">
+          <div class="why-problem">
+            <div class="why-problem-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            </div>
+            <div>
+              <div class="why-problem-label">The Problem</div>
+              <p class="why-problem-text">Chain salons don't know your name, your texture, or your style — every visit feels like starting from scratch.</p>
+            </div>
+          </div>
+          <div class="why-solution">
+            <div class="why-solution-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div class="why-solution-label">Our Solution</div>
+              <p class="why-solution-text">Our barbers remember you. From your fade length to your line-up preference — consistency is the FRG standard, every single visit.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-card fi fi-d1">
+          <div class="why-problem">
+            <div class="why-problem-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            </div>
+            <div>
+              <div class="why-problem-label">The Problem</div>
+              <p class="why-problem-text">Rushed barbers cut corners — literally. Uneven fades, blurry lines, and no attention to detail leave you walking out less than satisfied.</p>
+            </div>
+          </div>
+          <div class="why-solution">
+            <div class="why-solution-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div class="why-solution-label">Our Solution</div>
+              <p class="why-solution-text">Every cut gets the time it deserves. Our barbers take pride in clean fades, sharp tapes, and a finished look that speaks for itself — no shortcuts.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-card fi fi-d2">
+          <div class="why-problem">
+            <div class="why-problem-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            </div>
+            <div>
+              <div class="why-problem-label">The Problem</div>
+              <p class="why-problem-text">One location means a long trip across Brooklyn, unpredictable wait times, and no easy option when your regular barber is busy.</p>
+            </div>
+          </div>
+          <div class="why-solution">
+            <div class="why-solution-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div class="why-solution-label">Our Solution</div>
+              <p class="why-solution-text">Three Brooklyn locations in Bath Beach and Gravesend, open 7 days a week with extended hours. Walk in whenever it works for you — we're here.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
